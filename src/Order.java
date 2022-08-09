@@ -6,13 +6,14 @@ public class Order {
     private Order_Item[] items;
     private String status;
     private Date date;
+    private static int count = 0;
 
-    public Order(String id, Member customer, Order_Item[] items, String status, Date date) {
-        this.id = id;
+    public Order(Member customer, Order_Item[] items, String status, Date date) {
         this.customer = customer;
         this.items = items;
         this.status = status;
         this.date = date;
+        this.id = "O" + ++count;
     }
 
     public String getId() {

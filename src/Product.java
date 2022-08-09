@@ -4,13 +4,14 @@ public class Product {
     private String category;
     private String detail;
     private double price;
+    private static int count = 0;
 
-    public Product(String id, String name, String category, String detail, double price) {
-        this.id = id;
+    public Product(String name, String category, String detail, double price) {
         this.name = name;
         this.category = category;
         this.detail = detail;
         this.price = price;
+        this.id = "P" + ++count;
     }
 
     public String getId() {

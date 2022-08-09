@@ -6,14 +6,15 @@ public class Member {
     private String address;
     private String membership;
     private double total_spending = 0;
+    private static int count = 0;
 
     public Member(String id, String username, String password, String name, String address, String membership) {
-        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.address = address;
         this.membership = membership;
+        this.id = "C" + ++count;
     }
 
     public String getId() {
