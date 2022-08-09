@@ -100,7 +100,7 @@ public class AddReadProduct {
         ProductList = (ArrayList<Product>) proIn.readObject();
 
         for (Product p: ProductList) {
-            System.out.println("Name: " + p.getName() + " \n" + "Category: " + p.getCategory() + " \n" + "Detail: " + p.getDetail() + " \n" + "Price: " + p.getPrice() + "\n\n");
+            System.out.println("ID: " + p.getId() + "\nName: " + p.getName() + " \n" + "Category: " + p.getCategory() + " \n" + "Detail: " + p.getDetail() + " \n" + "Price: " + p.getPrice() + "\n\n");
         }
     }
 
