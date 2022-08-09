@@ -66,11 +66,14 @@ public class Member  implements Serializable {
         return total_spending;
     }
     public void updateMembership(){
-        if (5000000<this.total_spending && this.total_spending<=10000000){
+        //
+        //load data from order.obj to calculate total spending
+        //
+        if (5000000 < this.total_spending && this.total_spending <= 10000000){
             this.membership = "Silver";
-        }else if (10000000<this.total_spending && this.total_spending<=25000000){
+        }else if (10000000 < this.total_spending && this.total_spending <= 25000000){
             this.membership = "Gold";
-        } else if (25000000<this.total_spending) {
+        } else if (25000000 < this.total_spending) {
             this.membership = "Platinum";
         }
     }
