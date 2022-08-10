@@ -1,4 +1,5 @@
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.io.File;
@@ -11,7 +12,7 @@ public class ListOfOrder {
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
     }
-    public void readOrders() throws Exception{
+    public void readOrder() throws IOException, ClassNotFoundException{
         File ordersPackage = new File("Orders");
         File[] orders = ordersPackage.listFiles();
         for (File f : orders){
