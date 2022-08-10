@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Date;
 
 public class ListOfOrder {
     private ArrayList<Order> orderList;
@@ -31,5 +32,15 @@ public class ListOfOrder {
             }
         }
     }
-    public void
+    public double getTotalRevenue() throws IOException, ClassNotFoundException{
+        ListOfOrder listOfOrder = new ListOfOrder();
+        listOfOrder.readOrder();
+        double totalRevenue = 0;
+        for (Order order : listOfOrder.getOrderList()){
+            if (order.getDate() == new Date()){
+                totalRevenue += order.getTotal_price();
+            }
+        }
+        return totalRevenue;
+    }
 }
