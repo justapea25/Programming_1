@@ -130,7 +130,7 @@ public class ListOfProduct {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ListOfProduct productList = new ListOfProduct();
 
-        productList.addNewProduct();
+//        productList.addNewProduct();
         productList.readProducts();
 
     }
