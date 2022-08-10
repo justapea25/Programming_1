@@ -89,48 +89,73 @@ public class ListOfProduct {
     }
 
     public void readProducts() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream("product.obj");
-        ObjectInputStream proIn = new ObjectInputStream(fi);
+    String path = "product.txt";
+		try {
+        FileReader fr = new FileReader(new File(path));
+        BufferedReader br = new BufferedReader(fr);
+        String line;
 
-        productList = (ArrayList<Product>) proIn.readObject();
-
-        for (Product p: productList) {
-            System.out.println("ID: " + p.getId() + "\nName: " + p.getName() + " \n" + "Category: " + p.getCategory() + " \n" + "Detail: " + p.getDetail() + " \n" + "Price: " + p.getPrice() + "\n\n");
+        while ((line = br.readLine()) != null) {
+            String data[] = line.split("\\t+");
+            String productID = data[0];
+            String productName = data[1];
+            String productCategory = data[2];
+            String productDetail = data[3];
+            Double productPrice = Double.parseDouble(data[4]);
+            Product p = new Product(productID, productName, productCategory, productDetail, productPrice);
+            this.productList.add(p);
+        }
+        br.close();
+        fr.close();
+        } catch (IOException e) {
+        System.out.println("Error: " + e.getMessage());
+        e.printStackTrace();
         }
     }
+    public void writeProductToFile() throws IOException, ClassNotFoundException {
+        String path = "product.txt";
 
-    public void addNewProduct() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream("product.obj");
-        ObjectInputStream proIn = new ObjectInputStream(fi);
-        productList = (ArrayList<Product>) proIn.readObject();
-        int listSize = productList.size();
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Name: ");
-        String name = scanner.nextLine();
-        System.out.println("Cate: ");
-        String cate = scanner.nextLine();
-        System.out.println("Detail: ");
-        String detail = scanner.nextLine();
-        System.out.println("Price: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
-
-        Product p = new Product(name, cate, detail, price);
-        p.setId("P" + (listSize + 1));
-        productList.add(p);
-
-        FileOutputStream of = new FileOutputStream("product.obj");
-        ObjectOutputStream proOut = new ObjectOutputStream(of);
-
-        proOut.writeObject(productList);
+        try {
+            File f = new File(path);
+            FileWriter fw = new FileWriter(f);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for(Product product : productList) {
+                bw.write(product.getId() + "\t");
+                bw.write(product.getName() + "\t");
+                bw.write(product.getCategory() + "\t");
+                bw.write(product.getDetail() + "\t");
+                bw.write(String.format("%.2f",product.getPrice()) + "\t");
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+    public void viewAllProduct() {
+        for (int i=0; i<productList.size(); i++) {
+            productList.get(i).viewProduct();
+        }
+    };
+    public Product searchProductById(String id) {
+        for(Product product : productList) {
+            if(product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+//    public void sortProductByPrice() {
+//        Collections.sort(productList, Product.compare);
+//    }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+    public static void main(String[] args) throws Exception {
         ListOfProduct productList = new ListOfProduct();
 
-//        productList.addNewProduct();
+//        productList.writeProductToFile();
         productList.readProducts();
 
     }
