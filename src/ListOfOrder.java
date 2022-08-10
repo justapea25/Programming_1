@@ -22,4 +22,13 @@ public class ListOfOrder {
             this.orderList.add(order);
         }
     }
+    public void searchOrder(String id) throws IOException, ClassNotFoundException{
+        ListOfOrder listOfOrder = new ListOfOrder();
+        listOfOrder.readOrder();
+        for (Order order : listOfOrder.getOrderList()){
+            if (id.equals(order.getId())){
+                // code
+            }
+        }
+    }
 }
