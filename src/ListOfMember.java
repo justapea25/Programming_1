@@ -16,7 +16,7 @@ public class ListOfMember {
     public void addMemberToList(Member member) {
         memberList.add(member);
     }
-    public void readMembers() {
+    public void readMembers() throws Exception{
         String path = "member.txt";
         try {
             FileReader fr = new FileReader(new File(path));
