@@ -7,9 +7,8 @@ public class Member  implements Serializable {
     private String name;
     private String address;
     private String membership;
-    private double total_spending;
 
-    public Member(String id, String username, String password, String name, String address) {
+    public Member(String id, String username, String password, String name, String address) throws Exception {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -60,20 +59,24 @@ public class Member  implements Serializable {
         this.membership = membership;
     }
 
-    public double getTotal_spending() {
+    public double getTotal_spending() throws Exception {
+        ListOfOrder listOfOrder = new ListOfOrder();
+        listOfOrder.readOrder();
+        double total_spending = 0;
+        for (Order order : listOfOrder.getOrderList()){
+            if(order.getCustomer().equals(this.id)){total_spending = total_spending + order.getTotal_price();}
+        }
         return total_spending;
     }
-    public void updateMembership(){
-        //
-        //load data from order.obj to calculate total spending
-        //
-        if (this.total_spending < 5000000){
+    public void updateMembership() throws Exception{
+        double total_spending = this.getTotal_spending();
+        if (this.getTotal_spending() < 5000000){
             this.membership = "none";
-        } else if (5000000 < this.total_spending && this.total_spending <= 10000000){
+        } else if (5000000 < total_spending && total_spending <= 10000000){
             this.membership = "Silver";
-        }else if (10000000 < this.total_spending && this.total_spending <= 25000000){
+        }else if (10000000 < total_spending && total_spending <= 25000000){
             this.membership = "Gold";
-        } else if (25000000 < this.total_spending) {
+        } else if (25000000 < total_spending) {
             this.membership = "Platinum";
         }
     }
