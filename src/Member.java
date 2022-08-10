@@ -8,16 +8,14 @@ public class Member  implements Serializable {
     private String address;
     private String membership;
     private double total_spending;
-    private static int count = 0;
 
     public Member(String id, String username, String password, String name, String address) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.address = address;
-        this.membership = "none";
-        this.total_spending = 0;
-        this.id = "C" + ++count;
+        updateMembership();
     }
 
     public String getId() {
@@ -69,7 +67,9 @@ public class Member  implements Serializable {
         //
         //load data from order.obj to calculate total spending
         //
-        if (5000000 < this.total_spending && this.total_spending <= 10000000){
+        if (this.total_spending < 5000000){
+            this.membership = "none";
+        } else if (5000000 < this.total_spending && this.total_spending <= 10000000){
             this.membership = "Silver";
         }else if (10000000 < this.total_spending && this.total_spending <= 25000000){
             this.membership = "Gold";
