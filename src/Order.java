@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Order implements Serializable {
     private String id;
@@ -63,4 +64,17 @@ public class Order implements Serializable {
     }
 
     public double getTotal_price() { return total_price; }
+
+    public static void create_order() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What do you want to buy? ");
+        String item = scanner.nextLine();
+        System.out.print("Quantity? ");
+        Double quantity = scanner.nextDouble();
+        System.out.println("Do you want to buy anything else? (y/n) ");
+        String response = scanner.nextLine();
+        while (response == "y") ;
+    }
+
 }
+
