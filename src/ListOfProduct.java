@@ -18,27 +18,11 @@ public class ListOfProduct {
         productList.add(p);
     }
 
-    public void addProducts() throws IOException {
+    public void constructProductsData() throws IOException {
         FileOutputStream of = new FileOutputStream("product.obj");
         ObjectOutputStream proOut = new ObjectOutputStream(of);
 
         Product p;
-        Scanner scanner = new Scanner(System.in);
-
-//        for (int i=1; i<31; i++) {
-//            System.out.println("Name: ");
-//            String name = scanner.nextLine();
-//            System.out.println("Cate: ");
-//            String cate = scanner.nextLine();
-//            System.out.println("Detail: ");
-//            String detail = scanner.nextLine();
-//            System.out.println("Price: ");
-//            double price = scanner.nextDouble();
-//            scanner.nextLine();
-//
-//            p = new Product(name, cate, detail, price);
-//            ProductList.add(p);
-//        }
 
         p = new Product("iPhone 13 Pro Max 256GB", "Phone", "Apple's iPhone 13 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.", 30690000);
         addProductToList(p);
@@ -115,8 +99,39 @@ public class ListOfProduct {
         }
     }
 
+    public void addNewProduct() throws IOException, ClassNotFoundException {
+        FileInputStream fi = new FileInputStream("product.obj");
+        ObjectInputStream proIn = new ObjectInputStream(fi);
+        productList = (ArrayList<Product>) proIn.readObject();
+        int listSize = productList.size();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Name: ");
+        String name = scanner.nextLine();
+        System.out.println("Cate: ");
+        String cate = scanner.nextLine();
+        System.out.println("Detail: ");
+        String detail = scanner.nextLine();
+        System.out.println("Price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        Product p = new Product(name, cate, detail, price);
+        p.setId("P" + (listSize + 1));
+        productList.add(p);
+
+        FileOutputStream of = new FileOutputStream("product.obj");
+        ObjectOutputStream proOut = new ObjectOutputStream(of);
+
+        proOut.writeObject(productList);
+    }
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ListOfProduct productList = new ListOfProduct();
+
+        productList.addNewProduct();
         productList.readProducts();
+
     }
 }
