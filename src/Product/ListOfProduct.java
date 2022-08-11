@@ -68,7 +68,7 @@ public class ListOfProduct {
         for (int i=0; i<productList.size(); i++) {
             productList.get(i).viewProduct();
         }
-    };
+    }
     public Product searchProductById(String id) {
         for(Product product : productList) {
             if(product.getId() == id) {
