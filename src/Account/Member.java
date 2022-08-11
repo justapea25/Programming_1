@@ -102,7 +102,7 @@ public class Member  implements Serializable {
         listOfOrder.readOrder();
         double total_spending = 0;
         for (Order order : listOfOrder.getOrderList()){
-            if(order.getCustomer().equals(this.id)){total_spending = total_spending + order.getTotal_price();}
+            if(order.getCustomer().equals(this)){total_spending += order.getTotal_price();}
         }
         return total_spending;
     }

@@ -26,7 +26,7 @@ public class MemberMenu extends GuestMenu {
         while (true) {
             try {
                 System.out.println("Welcome to our tech store: " + member.getUsername());
-//                printMenu();
+                printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 int n = sc.nextInt();
                 if (n == 1) {
