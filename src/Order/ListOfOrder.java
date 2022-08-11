@@ -16,7 +16,7 @@ public class ListOfOrder {
         this.orderList = orderList;
     }
     public void readOrder() throws IOException, ClassNotFoundException{
-        File ordersPackage = new File("Orders");
+        File ordersPackage = new File("src/files/Orders");
         File[] orders = ordersPackage.listFiles();
         for (File f : orders){
             FileInputStream fi = new FileInputStream(f.getAbsolutePath());

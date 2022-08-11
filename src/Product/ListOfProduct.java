@@ -19,7 +19,7 @@ public class ListOfProduct {
     }
 
     public void readProducts() throws IOException, ClassNotFoundException {
-        String path = "product.txt";
+        String path = "src/files/product.txt";
 		try {
         FileReader fr = new FileReader(new File(path));
         BufferedReader br = new BufferedReader(fr);
@@ -43,7 +43,7 @@ public class ListOfProduct {
         }
     }
     public void writeProductToFile() throws IOException, ClassNotFoundException {
-        String path = "product.txt";
+        String path = "src/files/product.txt";
 
         try {
             File f = new File(path);
