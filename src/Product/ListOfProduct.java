@@ -27,12 +27,12 @@ public class ListOfProduct {
         String line;
 
         while ((line = br.readLine()) != null) {
-            String data[] = line.split("\\t+");
+            String[] data = line.split("\\t+");
             String productID = data[0];
             String productName = data[1];
             String productCategory = data[2];
             String productDetail = data[3];
-            Double productPrice = Double.parseDouble(data[4]);
+            double productPrice = Double.parseDouble(data[4]);
             Product p = new Product(productID, productName, productCategory, productDetail, productPrice);
             this.productList.add(p);
         }
@@ -65,13 +65,13 @@ public class ListOfProduct {
         }
     }
     public void viewAllProduct() {
-        for (int i=0; i<productList.size(); i++) {
-            productList.get(i).viewProduct();
+        for (Product product : productList) {
+            product.viewProduct();
         }
     }
     public Product searchProductById(String id) {
         for(Product product : productList) {
-            if(product.getId() == id) {
+            if(product.getId().equals(id)) {
                 return product;
             }
         }
@@ -105,7 +105,6 @@ public class ListOfProduct {
 //        productList.writeProductToFile();
         productList.readProducts();
         productList.sortProductByPrice();
-//        productList.viewAllProduct();
 //        productList.viewAllProduct();
 //        Product.addProduct();
 

@@ -8,7 +8,6 @@ public class Product implements Serializable {
     private String category;
     private String detail;
     private double price;
-    private static int count = 0;
 
     public Product(String id, String name, String category, String detail, double price) {
         this.id = id;
@@ -61,7 +60,7 @@ public class Product implements Serializable {
         System.out.print("Detail of product: ");
         String detail = scanner.nextLine();
         System.out.print("Price of product: ");
-        Double price = scanner.nextDouble();
+        double price = scanner.nextDouble();
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         String id = "P"+(productList.getProductList().size()+1);

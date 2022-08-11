@@ -39,7 +39,7 @@ public class ListOfOrder {
         listOfOrder.readOrder();
         double totalRevenue = 0;
         for (Order order : listOfOrder.getOrderList()){
-            if (order.getDate() == new Date()){
+            if (order.getDate().equals(new Date())){
                 totalRevenue += order.getTotal_price();
             }
         }
