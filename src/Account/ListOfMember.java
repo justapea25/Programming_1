@@ -2,6 +2,7 @@ package Account;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ListOfMember {
     private ArrayList<Member> memberList;
@@ -66,6 +67,37 @@ public class ListOfMember {
     public void viewAllMembers(){
         for (Member member : this.memberList){
             member.viewMember();
+        }
+    }
+    public Member register() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter passowrd: ");
+        String password = scanner.nextLine();
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter your address: ");
+        String address = scanner.nextLine();
+        String id = "M" + (this.getMemberList().size()+1);
+        Member member = new Member(id, username, password, name, address);
+        this.addMemberToList(member);
+        this.writeMemberToFile();
+        return member;
+    }
+    public Member memberLogin() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Enter username: ");
+            String username = scanner.nextLine();
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            for (Member member : this.getMemberList()) {
+                if (username.equals(member.getUsername()) && password.equals(member.getPassword())) {
+                    return member;
+                }
+            }
+            System.out.println("Invalid username/password. Please try again.");
         }
     }
 }

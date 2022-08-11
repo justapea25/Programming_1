@@ -45,25 +45,16 @@ public class Product implements Serializable {
         this.detail = detail;
     }
 
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
+    public double getPrice() { return price; }
+    public void setPrice() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter new price: ");
+        this.price = sc.nextDouble();
     }
 
     public void viewProduct() {
         System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + " \n" + "Detail: " + detail + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
     }
 
-    public void updatePrice() throws IOException, ClassNotFoundException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter item ID: ");
-        String id = scanner.next();
-        System.out.println("Enter new price: ");
-        double newPrice = scanner.nextDouble();
-        ListOfProduct productList = new ListOfProduct();
-        productList.readProducts();
-        productList.searchProductById(id).setPrice(newPrice);
-    }
+
 }

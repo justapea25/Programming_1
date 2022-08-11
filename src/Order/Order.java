@@ -21,7 +21,7 @@ public class Order implements Serializable {
     public Order(Member customer, ArrayList<Order_Item> items) throws Exception{
         this.customer = customer;
         this.items = items;
-        this.status = "pending";
+        this.status = "placed";
         this.date = new Date();
         this.total_price = 0;
         for (Order_Item item : this.items){
@@ -34,7 +34,7 @@ public class Order implements Serializable {
         }
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
-        this.id = "O" + (listOfOrder.getOrderList().size() + 1);
+        this.id = "O" + (listOfOrder.getOrderList().get(listOfOrder.getOrderList().size()-1).getId() + 1);
     }
 
     public String getId() {
@@ -50,7 +50,6 @@ public class Order implements Serializable {
     public void setCustomer(Member customer) {
         this.customer = customer;
     }
-
     public ArrayList<Order_Item> getItems() {
         return this.items;
     }
@@ -61,10 +60,13 @@ public class Order implements Serializable {
     public String getStatus() {
         return status;
     }
-    public void setStatus(String status) {
+    public void setStatus() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter new status: ");
+        String status = sc.nextLine();
         this.status = status;
+        this.exportOrder();
     }
-
     public Date getDate() {
         return date;
     }
@@ -95,6 +97,7 @@ public class Order implements Serializable {
             if (response.equals("n")) {break;}
         }
         Order order = new Order(customer, order_items);
+        customer.updateMembership();
         order.exportOrder();
     }
     public void exportOrder() throws Exception{

@@ -39,6 +39,7 @@ public class MemberMenu extends GuestMenu {
                     productList.sortProductByPrice();
                 } else if (n == 4) {
                     Order.create_order(member);
+                    member.updateMembership();
                 } else if (n == 5) {
                     orderList.searchOrderByID().viewOrder();
                 } else if (n == 6) {

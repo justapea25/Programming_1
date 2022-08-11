@@ -34,11 +34,12 @@ public class ListOfOrder {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter order ID: ");
         String id = scanner.nextLine();
-        for (Order order : listOfOrder.getOrderList()){
+        for (Order order : this.getOrderList()){
             if (id.equals(order.getId())){
-                order.viewOrder();
+                return order;
             }
         }
+        return null;
     }
     public Order searchOrderByMember() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);

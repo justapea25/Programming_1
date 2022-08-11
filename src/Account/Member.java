@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Member  implements Serializable {
+    private static final long serialVersionUID = -6959344184946949782L;
     private String id;
     private String username;
     private String password;

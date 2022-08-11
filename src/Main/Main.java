@@ -4,7 +4,7 @@ import Menu.GuestMenu;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner s = new Scanner(System.in);
         // Print welcome screen
         System.out.println("COSC2081 GROUP ASSIGNMENT");

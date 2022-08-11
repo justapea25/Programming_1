@@ -37,7 +37,7 @@ public class GuestMenu {
     }
 
 
-    public static void main() {
+    public static void main() throws Exception{
         Scanner sc = new Scanner(System.in);
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();

@@ -102,8 +102,11 @@ public class ListOfProduct {
             product.viewProduct();
         }
     }
-    public Product searchProductById(String id) {
-        for(Product product : productList) {
+    public Product searchProductById() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter item ID: ");
+        String id = scanner.next().toUpperCase();
+        for(Product product : this.productList) {
             if(product.getId().equals(id)) {
                 return product;
             }
@@ -129,17 +132,5 @@ public class ListOfProduct {
         for (Product product : tempList) {
             product.viewProduct();
         }
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        ListOfProduct productList = new ListOfProduct();
-
-//        productList.writeProductToFile();
-        productList.readProducts();
-        productList.sortProductByPrice();
-//        productList.viewAllProduct();
-//        Product.addProduct();
-
     }
 }
