@@ -62,7 +62,7 @@ public class Member  implements Serializable {
     public void setMembership(String membership) {
         this.membership = membership;
     }
-    public void createMember(String username, String password, String name, String address) throws Exception{
+    public static void createMember(String username, String password, String name, String address) throws Exception{
         ListOfMember listOfMember = new ListOfMember();
         listOfMember.readMembers();
         String id = "M" + (listOfMember.getMemberList().size()+1);
