@@ -1,10 +1,7 @@
 package Product;
+
 import java.io.*;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
@@ -22,7 +19,7 @@ public class ListOfProduct {
         this.productList.add(p);
     }
 
-    public void readProducts() throws IOException, ClassNotFoundException {
+    public void readProducts() {
         String path = "src/files/product.txt";
 		try {
         FileReader fr = new FileReader(new File(path));
@@ -50,8 +47,7 @@ public class ListOfProduct {
         String path = "src/files/product.txt";
 
         try {
-            File f = new File(path);
-            FileWriter fw = new FileWriter(f);
+            FileWriter fw = new FileWriter(new File(path));
             BufferedWriter bw = new BufferedWriter(fw);
             for(Product product : productList) {
                 bw.write(product.getId() + "\t");
@@ -72,7 +68,7 @@ public class ListOfProduct {
         for (int i=0; i<productList.size(); i++) {
             productList.get(i).viewProduct();
         }
-    };
+    }
     public Product searchProductById(String id) {
         for(Product product : productList) {
             if(product.getId() == id) {
@@ -80,6 +76,13 @@ public class ListOfProduct {
             }
         }
         return null;
+    }
+    public void filterProductByCategory(String category) {
+        for(Product product : productList) {
+            if(product.getCategory().equals(category)) {
+                product.viewProduct();
+            }
+        }
     }
     public void sortProductByPrice() {
         ArrayList<Product> tempList = new ArrayList<Product>(productList);
@@ -102,7 +105,7 @@ public class ListOfProduct {
 //        productList.writeProductToFile();
         productList.readProducts();
         productList.sortProductByPrice();
-        productList.viewAllProduct();
+//        productList.viewAllProduct();
 //        productList.viewAllProduct();
 //        Product.addProduct();
 
