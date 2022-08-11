@@ -1,7 +1,10 @@
 package Order;
 
 import Product.Product;
-public class Order_Item {
+
+import java.io.Serializable;
+
+public class Order_Item implements Serializable {
     private Product product;
     private int quantity;
 

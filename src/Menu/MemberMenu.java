@@ -38,9 +38,7 @@ public class MemberMenu extends GuestMenu {
                 } else if (n == 4) {
                     Order.create_order(member);
                 } else if (n == 5) {
-                    System.out.println("Enter order ID: ");
-                    String ID = sc.nextLine();
-                    orderList.searchOrder(ID);
+                    orderList.searchOrder();
                 } else if (n == 6) {
                     break;
                 } else {

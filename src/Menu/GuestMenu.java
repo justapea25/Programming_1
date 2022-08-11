@@ -52,9 +52,11 @@ public class GuestMenu {
                 if (n == 1) {
                     Member member = Member.register();
                     MemberMenu.main(member);
+                    break;
                 } else if (n == 2) {
                     Member member = Member.login();
                     MemberMenu.main(member);
+                    break;
                 } else if (n == 3) {
                     productList.viewAllProduct();
                 } else if (n == 4) {

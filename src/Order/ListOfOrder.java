@@ -37,7 +37,7 @@ public class ListOfOrder {
         String id = scanner.nextLine();
         for (Order order : listOfOrder.getOrderList()){
             if (id.equals(order.getId())){
-                // code
+                order.viewOrder();
             }
         }
     }
