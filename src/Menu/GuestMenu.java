@@ -60,10 +60,12 @@ public class GuestMenu {
                         case "member": {
                             Member member = listOfMember.memberLogin();
                             MemberMenu.main(member);
+                            break;
                         }
                         case "admin": {
                             Admin admin = Admin.adminLogin();
                             AdminMenu.main(admin);
+                            break;
                         }
                     }
                     break;
