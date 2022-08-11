@@ -19,7 +19,7 @@ public class ListOfMember {
         memberList.add(member);
     }
     public void readMembers() throws Exception{
-        String path = "member.txt";
+        String path = "src/files/member.txt";
         try {
             FileReader fr = new FileReader(new File(path));
             BufferedReader br = new BufferedReader(fr);
@@ -43,11 +43,10 @@ public class ListOfMember {
         }
     }
     public void writeMemberToFile() throws IOException, ClassNotFoundException {
-        String path = "member.txt";
+        String path = "src/files/member.txt";
 
         try {
-            File f = new File(path);
-            FileWriter fw = new FileWriter(f);
+            FileWriter fw = new FileWriter(new File(path));
             BufferedWriter bw = new BufferedWriter(fw);
             for(Member member : memberList) {
                 bw.write(member.getId() + "\t");

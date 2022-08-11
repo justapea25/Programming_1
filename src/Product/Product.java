@@ -73,9 +73,6 @@ public class Product implements Serializable {
     public void viewProduct() {
         System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + " \n" + "Detail: " + detail + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
     }
-//    public void compareTo(Product a, Product b) {
-//        return a.price - b.price;
-//    }
 
     public void updatePrice() throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);

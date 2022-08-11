@@ -1,10 +1,7 @@
 package Product;
+
 import java.io.*;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
@@ -22,7 +19,7 @@ public class ListOfProduct {
         this.productList.add(p);
     }
 
-    public void readProducts() throws IOException, ClassNotFoundException {
+    public void readProducts() {
         String path = "src/files/product.txt";
 		try {
         FileReader fr = new FileReader(new File(path));
@@ -50,8 +47,7 @@ public class ListOfProduct {
         String path = "src/files/product.txt";
 
         try {
-            File f = new File(path);
-            FileWriter fw = new FileWriter(f);
+            FileWriter fw = new FileWriter(new File(path));
             BufferedWriter bw = new BufferedWriter(fw);
             for(Product product : productList) {
                 bw.write(product.getId() + "\t");
