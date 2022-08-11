@@ -81,22 +81,18 @@ public class ListOfProduct {
         }
         return null;
     }
-//    public void sortProductByPrice() {
-//        Collections.sort(productList, Product.compare);
-//    }
+    public void sortProductByPrice() {
+        ArrayList<Product> tempList = new ArrayList<Product>(productList);
 
-    public ArrayList<Product> sortProductByPrice() {
-        productList.sort(new Comparator<Product>() {
-            @Override
-            public int compare(Product first, Product second) {
-                if (first.getPrice() != second.getPrice()) {
-                    return Double.compare(first.getPrice(), second.getPrice());
-                }
-                return first.getName().compareTo(second.getName());
-            }
+        tempList.sort((p1, p2) -> {
+            if (p1.getPrice() != p2.getPrice())
+                return (int) (p1.getPrice() - p2.getPrice());
+            return p1.getName().compareTo(p2.getName());
         });
 
-        return productList;
+        for (Product product : tempList) {
+            product.viewProduct();
+        }
     }
 
 
