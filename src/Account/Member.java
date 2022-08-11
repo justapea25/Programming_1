@@ -3,6 +3,7 @@ import Order.ListOfOrder;
 import Order.Order;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Member  implements Serializable {
     private String id;
@@ -62,15 +63,40 @@ public class Member  implements Serializable {
     public void setMembership(String membership) {
         this.membership = membership;
     }
-    public static void createMember(String username, String password, String name, String address) throws Exception{
+    public static Member register() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter passowrd: ");
+        String password = scanner.nextLine();
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter your address: ");
+        String address = scanner.nextLine();
         ListOfMember listOfMember = new ListOfMember();
         listOfMember.readMembers();
         String id = "M" + (listOfMember.getMemberList().size()+1);
         Member member = new Member(id, username, password, name, address);
         listOfMember.addMemberToList(member);
         listOfMember.writeMemberToFile();
+        return member;
     }
-
+    public static Member login() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter passowrd: ");
+        String password = scanner.nextLine();
+        ListOfMember listOfMember = new ListOfMember();
+        listOfMember.readMembers();
+        int memberIndex = 0;
+        for (Member member : listOfMember.getMemberList()){
+            if (username.equals(member.getUsername()) && password.equals(member.getPassword())){
+                memberIndex = listOfMember.getMemberList().indexOf(member);
+            }
+        }
+        return listOfMember.getMemberList().get(memberIndex);
+    }
     public double getTotal_spending() throws Exception {
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
