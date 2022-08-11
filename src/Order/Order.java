@@ -1,6 +1,7 @@
 package Order;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -103,11 +104,13 @@ public class Order implements Serializable {
         orderOut.close();
     }
     public void viewOrder() {
+        String pattern = "dd-MM-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         System.out.println("ID: " + this.id);
         System.out.println("Customer name: " + this.customer.getName());
-        System.out.printf("%s %tB %<te, %<tY", "Date: " + this.getDate());
-        System.out.println("\nStatus: " + this.status);
-        System.out.println("Total price: " + this.total_price);
+        System.out.println("Date: " + simpleDateFormat.format(this.getDate()));
+        System.out.println("Status: " + this.status);
+        System.out.println("Total price: " + String.format("%,.0f", this.total_price) + " VND");
         System.out.println("Products: ");
         for (Order_Item item : this.items) {
             System.out.println(item.getProduct().getName() + " : " + item.getQuantity());

@@ -1,9 +1,9 @@
 package Account;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Admin implements Serializable {
-    private String id;
     private String username;
     private String password;
     private String name;
@@ -16,14 +16,6 @@ public class Admin implements Serializable {
         this.name = name;
         this.address = address;
     }
-
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }

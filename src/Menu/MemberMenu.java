@@ -18,11 +18,13 @@ public class MemberMenu extends GuestMenu {
     }
 
 
-    public static void main(Member member) {
+    public static void main(Member member) throws Exception{
         Scanner sc = new Scanner(System.in);
         ListOfProduct productList = new ListOfProduct();
-        ListOfOrder orderList = new ListOfOrder();
         productList.readProducts();
+        ListOfOrder orderList = new ListOfOrder();
+        orderList.readOrder();
+
         while (true) {
             try {
                 System.out.println("Welcome to our tech store: " + member.getUsername());
@@ -38,7 +40,7 @@ public class MemberMenu extends GuestMenu {
                 } else if (n == 4) {
                     Order.create_order(member);
                 } else if (n == 5) {
-                    orderList.searchOrder();
+                    orderList.searchOrderByID().viewOrder();
                 } else if (n == 6) {
                     break;
                 } else {

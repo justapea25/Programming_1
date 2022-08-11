@@ -1,13 +1,12 @@
 package Menu;
 
+import Account.Admin;
+import Account.ListOfMember;
 import Account.Member;
 import Product.ListOfProduct;
 import Product.Product;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class GuestMenu {
     public static void printMenu() {
@@ -42,7 +41,8 @@ public class GuestMenu {
         Scanner sc = new Scanner(System.in);
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
-
+        ListOfMember listOfMember = new ListOfMember();
+        listOfMember.readMembers();
         while (true) {
             try {
                 System.out.println("Welcome to our tech store");
@@ -50,12 +50,18 @@ public class GuestMenu {
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 int n = sc.nextInt();
                 if (n == 1) {
-                    Member member = Member.register();
+                    Member member = listOfMember.register();
                     MemberMenu.main(member);
                     break;
                 } else if (n == 2) {
-                    Member member = Member.login();
-                    MemberMenu.main(member);
+                    System.out.println("Do you want to login as admin or member? (admin/member)");
+                    if (sc.next().equals("admin")) { // Need to validate
+                        Member member = listOfMember.memberLogin();
+                        MemberMenu.main(member);
+                    } else if (sc.next().equals("member")) {
+                        Admin admin = Admin.adminLogin();
+                        AdminMenu.main(admin);
+                    }
                     break;
                 } else if (n == 3) {
                     productList.viewAllProduct();

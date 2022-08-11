@@ -29,10 +29,8 @@ public class ListOfOrder {
             this.orderList.add(order);
         }
     }
-    public void searchOrder() throws IOException, ClassNotFoundException{
+    public Order searchOrderByID() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);
-        ListOfOrder listOfOrder = new ListOfOrder();
-        listOfOrder.readOrder();
         System.out.print("Enter order ID: ");
         String id = scanner.nextLine();
         for (Order order : listOfOrder.getOrderList()){
@@ -41,15 +39,42 @@ public class ListOfOrder {
             }
         }
     }
+    public Order searchOrderByMember() throws IOException, ClassNotFoundException{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the member ID: ");
+        String memberId = scanner.nextLine();
+        for (Order order : this.getOrderList()){
+            if (order.getCustomer().getId().equals(memberId)){
+                return order;
+            }
+        }
+        return null;
+    }
+
+    public int getTotalOrder() throws IOException, ClassNotFoundException {
+        int count = 0;
+        for (Order order : this.getOrderList()){
+            if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){
+                count ++;
+            }
+        }
+        return count;
+    }
+
     public double getTotalRevenue() throws IOException, ClassNotFoundException{
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
         double totalRevenue = 0;
-        for (Order order : listOfOrder.getOrderList()){
-            if (order.getDate().equals(new Date())){
+        for (Order order : this.getOrderList()){
+            if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){
                 totalRevenue += order.getTotal_price();
             }
         }
         return totalRevenue;
+    }
+    public void viewAllOrders() {
+        for (Order order : orderList) {
+            order.viewOrder();
+        }
     }
 }
