@@ -1,9 +1,6 @@
 package Order;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -12,6 +9,7 @@ import Account.Member;
 import Product.*;
 
 public class Order implements Serializable {
+    private static final long serialVersionUID = -3831393805083874427L;
     private String id;
     private Member customer;
     private ArrayList<Order_Item> items;
@@ -19,7 +17,7 @@ public class Order implements Serializable {
     private Date date;
     private double total_price;
 
-    public Order(Member customer, ArrayList<Order_Item> items) {
+    public Order(Member customer, ArrayList<Order_Item> items) throws Exception{
         this.customer = customer;
         this.items = items;
         this.status = "pending";
@@ -33,6 +31,9 @@ public class Order implements Serializable {
             case "Gold": this.total_price = this.total_price * 0.9;
             case "Platinum": this.total_price = this.total_price * 0.85;
         }
+        ListOfOrder listOfOrder = new ListOfOrder();
+        listOfOrder.readOrder();
+        this.id = "O" + (listOfOrder.getOrderList().size() + 1);
     }
 
     public String getId() {
@@ -50,7 +51,7 @@ public class Order implements Serializable {
     }
 
     public ArrayList<Order_Item> getItems() {
-        return items;
+        return this.items;
     }
     public void setItems(ArrayList<Order_Item> items) {
         this.items = items;
@@ -88,17 +89,29 @@ public class Order implements Serializable {
                     order_items.add(order_item);
                 }
             }
-            System.out.println("Do you want to buy anything else? (y/n) ");
-            String response = scanner.nextLine();
+            System.out.print("Do you want to buy anything else? (y/n): ");
+            String response = scanner.next();
             if (response.equals("n")) {break;}
         }
         Order order = new Order(customer, order_items);
         order.exportOrder();
     }
     public void exportOrder() throws Exception{
-        FileOutputStream fo = new FileOutputStream("Orders"+File.pathSeparator+this.id+".obj");
+        FileOutputStream fo = new FileOutputStream("src/files/Orders/"+this.id+".obj");
         ObjectOutputStream orderOut = new ObjectOutputStream(fo);
         orderOut.writeObject(this);
+        orderOut.close();
+    }
+    public void viewOrder() {
+        System.out.println("ID: " + this.id);
+        System.out.println("Customer name: " + this.customer.getName());
+        System.out.printf("%s %tB %<te, %<tY", "Date: " + this.getDate());
+        System.out.println("\nStatus: " + this.status);
+        System.out.println("Total price: " + this.total_price);
+        System.out.println("Products: ");
+        for (Order_Item item : this.items) {
+            System.out.println(item.getProduct().getName() + " : " + item.getQuantity());
+        }
     }
 }
 

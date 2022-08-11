@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Date;
+import java.util.Scanner;
 
 public class ListOfOrder {
     private ArrayList<Order> orderList;
@@ -28,9 +29,12 @@ public class ListOfOrder {
             this.orderList.add(order);
         }
     }
-    public void searchOrder(String id) throws IOException, ClassNotFoundException{
+    public void searchOrder() throws IOException, ClassNotFoundException{
+        Scanner scanner = new Scanner(System.in);
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
+        System.out.print("Enter order ID: ");
+        String id = scanner.nextLine();
         for (Order order : listOfOrder.getOrderList()){
             if (id.equals(order.getId())){
                 // code
