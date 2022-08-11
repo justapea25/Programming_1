@@ -34,7 +34,7 @@ public class Order implements Serializable {
         }
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
-        this.id = "O" + (listOfOrder.getOrderList().get(listOfOrder.getOrderList().size()-1).getId() + 1);
+        this.id = "O" + (listOfOrder.getOrderList().size() + 1);
     }
 
     public String getId() {
