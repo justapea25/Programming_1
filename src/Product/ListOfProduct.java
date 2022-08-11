@@ -2,6 +2,8 @@ package Product;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
@@ -63,6 +65,37 @@ public class ListOfProduct {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public void addProduct() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Name of product: ");
+        String name = scanner.nextLine();
+        System.out.print("Category of product: ");
+        String category = scanner.nextLine();
+        System.out.print("Detail of product: ");
+        String detail = scanner.nextLine();
+        System.out.print("Price of product: ");
+        double price = scanner.nextDouble();
+        String id = "P"+(this.productList.size()+1);
+        Product product = new Product(id, name, category, detail, price);
+        this.addProductToList(product);
+        this.writeProductToFile();
+    }
+
+    public void remove_product() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter the id of the product you want to remove");
+            String remove_id = scanner.nextLine();
+            if (productList.removeIf(product -> product.getId().equals(remove_id))) {
+                System.out.println("Product removed!");
+                break;
+            } else {
+                System.out.println("Invalid ID. Please try again.");
+            }
+        }
+        this.writeProductToFile();
     }
     public void viewAllProduct() {
         for (Product product : productList) {

@@ -19,6 +19,7 @@ public class ListOfOrder {
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
     }
+
     public void readOrder() throws IOException, ClassNotFoundException{
         File ordersPackage = new File("src/files/Orders");
         File[] orders = ordersPackage.listFiles();
@@ -62,8 +63,6 @@ public class ListOfOrder {
     }
 
     public double getTotalRevenue() throws IOException, ClassNotFoundException{
-        ListOfOrder listOfOrder = new ListOfOrder();
-        listOfOrder.readOrder();
         double totalRevenue = 0;
         for (Order order : this.getOrderList()){
             if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){

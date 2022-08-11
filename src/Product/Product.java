@@ -51,23 +51,6 @@ public class Product implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-    public static void addProduct() throws Exception{
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Name of product: ");
-        String name = scanner.nextLine();
-        System.out.print("Category of product: ");
-        String category = scanner.nextLine();
-        System.out.print("Detail of product: ");
-        String detail = scanner.nextLine();
-        System.out.print("Price of product: ");
-        double price = scanner.nextDouble();
-        ListOfProduct productList = new ListOfProduct();
-        productList.readProducts();
-        String id = "P"+(productList.getProductList().size()+1);
-        Product product = new Product(id, name, category, detail, price);
-        productList.addProductToList(product);
-        productList.writeProductToFile();
-    }
 
     public void viewProduct() {
         System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + " \n" + "Detail: " + detail + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
