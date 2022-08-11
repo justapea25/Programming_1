@@ -21,9 +21,11 @@ public class ListOfAdmin {
             FileReader fr = new FileReader(new File(path));
             BufferedReader br = new BufferedReader(fr);
             String line;
-
             while ((line = br.readLine()) != null) {
-                String data[] = line.split("\\t+");
+                String[] data = line.split("\\t+");
+                for (String i : data){
+                    System.out.println(i);
+                }
                 String adminUsername = data[0];
                 String adminPassword = data[1];
                 Admin admin = new Admin(adminUsername, adminPassword);
@@ -35,9 +37,5 @@ public class ListOfAdmin {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-    public static void main(String[] args) {
-
-
     }
 }
