@@ -63,4 +63,9 @@ public class ListOfMember {
             e.printStackTrace();
         }
     }
+    public void viewAllMembers(){
+        for (Member member : this.memberList){
+            member.viewMember();
+        }
+    }
 }
