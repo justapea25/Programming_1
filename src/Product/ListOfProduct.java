@@ -77,7 +77,7 @@ public class ListOfProduct {
         String detail = scanner.nextLine();
         System.out.print("Price of product: ");
         double price = scanner.nextDouble();
-        String id = "P"+(this.productList.size()+1);
+        String id = "P"+(this.productList.get(this.productList.size()-1).getId()+1);
         Product product = new Product(id, name, category, detail, price);
         this.addProductToList(product);
         this.writeProductToFile();
