@@ -23,9 +23,6 @@ public class ListOfAdmin {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("\\t+");
-                for (String i : data){
-                    System.out.println(i);
-                }
                 String adminUsername = data[0];
                 String adminPassword = data[1];
                 Admin admin = new Admin(adminUsername, adminPassword);
