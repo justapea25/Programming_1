@@ -1,7 +1,7 @@
+package Product;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
-
 public class Product implements Serializable {
     private String id;
     private String name;

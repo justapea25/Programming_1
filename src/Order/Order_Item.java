@@ -1,3 +1,6 @@
+package Order;
+
+import Product.Product;
 public class Order_Item {
     private Product product;
     private int quantity;

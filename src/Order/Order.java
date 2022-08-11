@@ -1,3 +1,5 @@
+package Order;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -5,6 +7,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import Account.Member;
+import Product.*;
 
 public class Order implements Serializable {
     private String id;
@@ -21,7 +26,7 @@ public class Order implements Serializable {
         this.date = new Date();
         this.total_price = 0;
         for (Order_Item item : this.items){
-            this.total_price = this.total_price + item.getProduct().getPrice()*item.getQuantity();
+            this.total_price = this.total_price + item.getProduct().getPrice() *item.getQuantity();
         }
         switch (this.customer.getMembership()){
             case "Silver": this.total_price = this.total_price * 0.95;
