@@ -77,6 +77,13 @@ public class ListOfProduct {
         }
         return null;
     }
+    public void filterProductByCategory(String category) {
+        for(Product product : productList) {
+            if(product.getCategory().equals(category)) {
+                product.viewProduct();
+            }
+        }
+    }
     public void sortProductByPrice() {
         ArrayList<Product> tempList = new ArrayList<Product>(productList);
 
@@ -98,7 +105,7 @@ public class ListOfProduct {
 //        productList.writeProductToFile();
         productList.readProducts();
         productList.sortProductByPrice();
-        productList.viewAllProduct();
+//        productList.viewAllProduct();
 //        productList.viewAllProduct();
 //        Product.addProduct();
 
