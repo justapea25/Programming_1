@@ -109,15 +109,17 @@ public class Order implements Serializable {
     public void viewOrder() {
         String pattern = "dd-MM-yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        System.out.println("\n----------------------");
         System.out.println("ID: " + this.id);
         System.out.println("Customer name: " + this.customer.getName());
         System.out.println("Date: " + simpleDateFormat.format(this.getDate()));
         System.out.println("Status: " + this.status);
         System.out.println("Products: ");
         for (Order_Item item : this.items) {
-            System.out.println(item.getProduct().getName() + " : " + item.getQuantity());
+            System.out.println("\t" + item.getProduct().getName() + " : " + item.getQuantity());
         }
         System.out.println("Total price: " + String.format("%,.0f", this.total_price) + " VND");
+        System.out.println("----------------------\n");
     }
 
 }
