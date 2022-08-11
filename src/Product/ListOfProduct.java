@@ -22,6 +22,7 @@ public class ListOfProduct {
     }
 
     public void readProducts() {
+        this.productList.clear();
         String path = "src/files/product.txt";
 		try {
         FileReader fr = new FileReader(new File(path));

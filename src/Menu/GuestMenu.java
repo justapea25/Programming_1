@@ -55,12 +55,16 @@ public class GuestMenu {
                     break;
                 } else if (n == 2) {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
-                    if (sc.next().equals("admin")) { // Need to validate
-                        Member member = listOfMember.memberLogin();
-                        MemberMenu.main(member);
-                    } else if (sc.next().equals("member")) {
-                        Admin admin = Admin.adminLogin();
-                        AdminMenu.main(admin);
+                    String input = sc.next();// Need to validate
+                    switch (input) {
+                        case "member": {
+                            Member member = listOfMember.memberLogin();
+                            MemberMenu.main(member);
+                        }
+                        case "admin": {
+                            Admin admin = Admin.adminLogin();
+                            AdminMenu.main(admin);
+                        }
                     }
                     break;
                 } else if (n == 3) {

@@ -41,8 +41,10 @@ public class AdminMenu extends GuestMenu {
                 } else if (n == 2) {
                     orderList.viewAllOrders();
                 } else if (n == 3) {
+                    memberList.readMembers();
                     memberList.viewAllMembers();
                 } else if (n == 4) {
+                    productList.readProducts();
                     productList.addProduct();
                 } else if (n == 5) {
                     orderList.searchOrderByMember();

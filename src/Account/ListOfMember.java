@@ -20,6 +20,7 @@ public class ListOfMember {
         memberList.add(member);
     }
     public void readMembers() throws Exception{
+        this.memberList.clear();
         String path = "src/files/member.txt";
         try {
             FileReader fr = new FileReader(new File(path));
