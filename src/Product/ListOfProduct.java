@@ -1,6 +1,10 @@
 package Product;
 import java.io.*;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
@@ -81,14 +85,30 @@ public class ListOfProduct {
 //        Collections.sort(productList, Product.compare);
 //    }
 
+    public ArrayList<Product> sortProductByPrice() {
+        productList.sort(new Comparator<Product>() {
+            @Override
+            public int compare(Product first, Product second) {
+                if (first.getPrice() != second.getPrice()) {
+                    return Double.compare(first.getPrice(), second.getPrice());
+                }
+                return first.getName().compareTo(second.getName());
+            }
+        });
+
+        return productList;
+    }
+
 
     public static void main(String[] args) throws Exception {
         ListOfProduct productList = new ListOfProduct();
 
 //        productList.writeProductToFile();
         productList.readProducts();
+        productList.sortProductByPrice();
+        productList.viewAllProduct();
 //        productList.viewAllProduct();
-        Product.addProduct();
+//        Product.addProduct();
 
     }
 }

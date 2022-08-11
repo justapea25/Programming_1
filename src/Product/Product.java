@@ -77,7 +77,6 @@ public class Product implements Serializable {
 //        return a.price - b.price;
 //    }
 
-
     public void updatePrice() throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter item ID: ");
