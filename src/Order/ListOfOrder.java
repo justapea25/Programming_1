@@ -9,8 +9,11 @@ import java.util.Date;
 
 public class ListOfOrder {
     private ArrayList<Order> orderList;
+    public ListOfOrder(){
+        this.orderList = new ArrayList<>();
+    }
     public ArrayList<Order> getOrderList() {
-        return orderList;
+        return this.orderList;
     }
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
@@ -18,7 +21,7 @@ public class ListOfOrder {
     public void readOrder() throws IOException, ClassNotFoundException{
         File ordersPackage = new File("src/files/Orders");
         File[] orders = ordersPackage.listFiles();
-        for (File f : orders){
+        for (File f : orders) {
             FileInputStream fi = new FileInputStream(f.getAbsolutePath());
             ObjectInputStream orderIn = new ObjectInputStream(fi);
             Order order = (Order) orderIn.readObject();
