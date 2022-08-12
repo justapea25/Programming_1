@@ -3,10 +3,9 @@ package Order;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.File;
-import java.util.Date;
-import java.util.Scanner;
+
 import Functions.validateInput;
 
 public class ListOfOrder {
@@ -30,6 +29,7 @@ public class ListOfOrder {
             Order order = (Order) orderIn.readObject();
             this.orderList.add(order);
         }
+        Collections.reverse(this.orderList);
     }
     public Order searchOrderByID() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);
