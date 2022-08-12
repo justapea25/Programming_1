@@ -85,5 +85,6 @@ public class GuestMenu {
                 e.printStackTrace();
             }
         }
+        listOfMember.writeMemberToFile();
     }
 }

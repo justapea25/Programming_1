@@ -80,10 +80,10 @@ public class ListOfMember {
         String name = scanner.nextLine();
         System.out.print("Enter your address: ");
         String address = scanner.nextLine();
-        String id = "M" + (this.getMemberList().size()+1);
+        String lastID = this.memberList.get(this.memberList.size() - 1).getId();
+        String id = "M" + (Integer.parseInt(lastID.substring(1) + 1));
         Member member = new Member(id, username, password, name, address);
         this.addMemberToList(member);
-        this.writeMemberToFile();
         return member;
     }
     public Member memberLogin() throws Exception{
