@@ -14,7 +14,8 @@ public class MemberMenu extends GuestMenu {
         System.out.println("3 - Sort all products by price");
         System.out.println("4 - Create an order");
         System.out.println("5 - Search order by ID");
-        System.out.println("6 - Exit");
+        System.out.println("6 - View profile");
+        System.out.println("7 - Exit");
     }
 
 
@@ -27,7 +28,7 @@ public class MemberMenu extends GuestMenu {
 
         while (true) {
             try {
-                System.out.println("Welcome to our tech store: " + member.getUsername() + "(Membership: " + member.getMembership() + ")");
+                System.out.println("Welcome to our tech store: " + member.getUsername() + " ( Membership: " + member.getMembership() + ")");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 int n = sc.nextInt();
@@ -43,6 +44,8 @@ public class MemberMenu extends GuestMenu {
                 } else if (n == 5) {
                     orderList.searchOrderByID().viewOrder();
                 } else if (n == 6) {
+                    member.viewMember();
+                } else if (n == 7) {
                     break;
                 } else {
                     System.out.println("No matching selection, please try again");

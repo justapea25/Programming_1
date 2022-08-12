@@ -87,6 +87,6 @@ public class Member  implements Serializable {
         }
     }
     public void viewMember(){
-        System.out.println("ID: " + this.id + "\nName: " + this.name + " \nAddress " + this.address + " \nMembership: " + this.membership + "\n\n");
+        System.out.println("Member ID: " + this.id + "\nUsername: " + this.name + " \nAddress " + this.address + " \nMembership: " + this.membership + "\n\n");
     }
 }
