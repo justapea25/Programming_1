@@ -100,6 +100,7 @@ public class Order implements Serializable {
             if (response.equals("n")) {break;}
         }
         Order order = new Order(customer, order_items);
+        order.viewOrder();
         customer.updateMembership();
         order.exportOrder();
     }

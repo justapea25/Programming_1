@@ -42,7 +42,12 @@ public class MemberMenu extends GuestMenu {
                     Order.create_order(member);
                     member.updateMembership();
                 } else if (n == 5) {
-                    orderList.searchOrderByID().viewOrder();
+                    Order order = orderList.searchOrderByID();
+                    if (order != null){
+                        order.viewOrder();
+                    } else {
+                        System.out.println("There is no order with such ID.");
+                    }
                 } else if (n == 6) {
                     member.viewMember();
                 } else if (n == 7) {
