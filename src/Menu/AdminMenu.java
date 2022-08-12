@@ -15,11 +15,12 @@ public class AdminMenu extends GuestMenu {
         System.out.println("2 - List all orders");
         System.out.println("3 - List all members");
         System.out.println("4 - Add product");
-        System.out.println("5 - List all orders of a specific customer");
-        System.out.println("6 - Change status of order");
-        System.out.println("7 - Update price");
-        System.out.println("8 - See the total revenues and orders today");
-        System.out.println("9 - Exit");
+        System.out.println("5 - Remove product");
+        System.out.println("6 - List all orders of a specific customer");
+        System.out.println("7 - Change status of order");
+        System.out.println("8 - Update price");
+        System.out.println("9 - See the total revenues and orders today");
+        System.out.println("10 - Exit");
     }
 
     public static void main(Admin admin) throws Exception {
@@ -45,17 +46,19 @@ public class AdminMenu extends GuestMenu {
                 } else if (n == 4) {
                     productList.addProduct();
                 } else if (n == 5) {
+                    productList.removeProduct();
+                } else if (n == 6) {
                     for (Order order : orderList.searchOrderByMember()){
                         order.viewOrder();
                     };
-                } else if (n == 6) {
-                    orderList.searchOrderByID().setStatus();
                 } else if (n == 7) {
-                    productList.searchProductById().setPrice();
+                    orderList.searchOrderByID().setStatus();
                 } else if (n == 8) {
+                    productList.searchProductById().setPrice();
+                } else if (n == 9) {
                     System.out.println("Today's revenue: " + String.format("%,.0f", orderList.getTotalRevenue()) + " VND");
                     System.out.println("Today's total number of order: " + orderList.getTotalOrder());
-                } else if (n == 9) {
+                } else if (n == 10) {
                     break;
                 } else {
                     System.out.println("No matching selection, please try again");

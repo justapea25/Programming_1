@@ -87,12 +87,12 @@ public class ListOfProduct {
         this.addProductToList(product);
     }
 
-    public void remove_product() throws Exception{
+    public void removeProduct() throws Exception{
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter the id of the product you want to remove");
-            String remove_id = scanner.nextLine();
-            if (productList.removeIf(product -> product.getId().equals(remove_id))) {
+            String id = scanner.nextLine();
+            if (productList.removeIf(product -> product.getId().equals(id))) {
                 System.out.println("Product removed!");
                 break;
             } else {
