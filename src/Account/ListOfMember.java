@@ -1,8 +1,11 @@
 package Account;
 
+import Product.Product;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class ListOfMember {
     private ArrayList<Member> memberList;
@@ -70,10 +73,21 @@ public class ListOfMember {
             member.viewMember();
         }
     }
-    public Member register() throws Exception{
+    public Member register() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
+        int count;
+        String username;
+        while (true) {
+            count = 0;
+            System.out.print("Enter username: ");
+            username = scanner.nextLine();
+            for (Member member : memberList) {
+                if (username.equals(member.getUsername()))
+                    count ++;
+            }
+            if (count == 0) break;
+            System.out.println("Username already exists!");
+        }
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
         System.out.print("Enter your full name: ");
