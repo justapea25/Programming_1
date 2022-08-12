@@ -52,8 +52,18 @@ public class Product implements Serializable {
         this.price = Double.parseDouble(ValidateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
     }
 
-    public void viewProduct() {
-        System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + " \n" + "Detail: " + detail + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
+    public void viewProduct(String display) {
+        switch (display) {
+            case "all" ->
+                    System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + " \n" + "Detail: " + detail + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
+            case "category" ->
+                    System.out.println("ID: " + id + "\nName: " + name + "\n\n");
+            case "price" ->
+                    System.out.println("ID: " + id + "\nName: " + name + " \n" + "Price: " + String.format("%,.0f", price) + " VND\n\n");
+            case "general" ->
+                    System.out.println("ID: " + id + "\nName: " + name + " \n" + "Category: " + category + "\n\n");
+        }
+
     }
 
 
