@@ -14,9 +14,10 @@ public class GuestMenu {
         System.out.println("1 - Register for a new account");
         System.out.println("2 - Login to existing account");
         System.out.println("3 - List all available products"); // Then customer can see a product detail
-        System.out.println("4 - Search products by a category");
-        System.out.println("5 - Sort all products by price");
-        System.out.println("6 - Exit");
+        System.out.println("4 - View product details");
+        System.out.println("5 - Search products by a category");
+        System.out.println("6 - Sort all products by price");
+        System.out.println("7 - Exit");
     }
 
     public static void searchProductByCategory(ListOfProduct productList) {
@@ -73,12 +74,14 @@ public class GuestMenu {
                 } else if (n == 3) {
                     productList.viewAllProduct();
                 } else if (n == 4) {
-                    searchProductByCategory(productList);
+                    productList.displayProductById();
                 } else if (n == 5) {
+                    searchProductByCategory(productList);
+                } else if (n == 6) {
                     System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
                     String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
                     productList.sortProductByPrice(input);
-                } else if (n == 6) {
+                } else if (n == 7) {
                     break;
                 } else {
                     System.out.println("No matching selection, please try again");
