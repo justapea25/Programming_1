@@ -1,5 +1,6 @@
 package Product;
 
+import Functions.validateInput;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -91,7 +92,7 @@ public class ListOfProduct {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter the id of the product you want to remove");
-            String id = scanner.nextLine();
+            String id = validateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
             if (productList.removeIf(product -> product.getId().equals(id))) {
                 System.out.println("Product removed!");
                 break;
@@ -108,8 +109,8 @@ public class ListOfProduct {
     }
     public Product searchProductById() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter item ID: ");
-        String id = scanner.next().toUpperCase();
+        System.out.println("Enter product ID: ");
+        String id = validateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)").toUpperCase();
         for(Product product : this.productList) {
             if(product.getId().equals(id)) {
                 return product;

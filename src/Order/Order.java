@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import Account.Member;
+import Functions.validateInput;
 import Product.*;
 
 public class Order implements Serializable {
@@ -85,7 +86,7 @@ public class Order implements Serializable {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("What do you want to buy? (enter product ID) ");
-            String item = scanner.nextLine();
+            String item = validateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
             System.out.print("Quantity? ");
             int quantity = scanner.nextInt();
             for (Product product : listOfProduct.getProductList()) {
@@ -95,7 +96,7 @@ public class Order implements Serializable {
                 }
             }
             System.out.print("Do you want to buy anything else? (y/n): ");
-            String response = scanner.next();
+            String response = validateInput.inputPatternCheck("y||n", "Only enter y or n");
             if (response.equals("n")) {break;}
         }
         Order order = new Order(customer, order_items);

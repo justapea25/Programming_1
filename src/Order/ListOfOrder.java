@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.util.Date;
 import java.util.Scanner;
+import Functions.validateInput;
 
 public class ListOfOrder {
     private ArrayList<Order> orderList;
@@ -33,7 +34,7 @@ public class ListOfOrder {
     public Order searchOrderByID() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter order ID: ");
-        String id = scanner.nextLine();
+        String id = validateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
         for (Order order : this.getOrderList()){
             if (id.equals(order.getId())){
                 return order;
@@ -44,7 +45,7 @@ public class ListOfOrder {
     public ArrayList<Order> searchOrderByMember() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the member ID: ");
-        String memberId = scanner.nextLine();
+        String memberId = validateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
         ArrayList<Order> orders = new ArrayList<Order>();
         for (Order order : this.getOrderList()){
             if (order.getCustomer().getId().equals(memberId)){

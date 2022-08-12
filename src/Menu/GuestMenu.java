@@ -5,6 +5,7 @@ import Account.ListOfMember;
 import Account.Member;
 import Product.ListOfProduct;
 import Product.Product;
+import Functions.validateInput;
 
 import java.util.*;
 
@@ -56,7 +57,7 @@ public class GuestMenu {
                     break;
                 } else if (n == 2) {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
-                    String input = sc.next();// Need to validate
+                    String input = validateInput.inputPatternCheck("admin||member", "wrong input, please try again");
                     switch (input) {
                         case "member": {
                             Member member = listOfMember.memberLogin();

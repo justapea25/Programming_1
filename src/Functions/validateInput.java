@@ -1,3 +1,5 @@
+package Functions;
+
 import java.util.regex.*;
 import java.util.Scanner;
 
@@ -11,9 +13,5 @@ public class validateInput {
                 return input;
             System.out.println(message); // print if invalid
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(inputPatternCheck("[0-9]*", "Only enter number!"));
     }
 }
