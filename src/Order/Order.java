@@ -87,7 +87,7 @@ public class Order implements Serializable {
             System.out.print("What do you want to buy? (enter product ID) ");
             String item = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
             System.out.print("Quantity? ");
-            int quantity = scanner.nextInt();
+            int quantity = Integer.parseInt(ValidateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
             for (Product product : listOfProduct.getProductList()) {
                 if (item.equals(product.getId())) {
                     Order_Item order_item = new Order_Item(product, quantity);
