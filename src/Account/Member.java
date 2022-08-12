@@ -1,9 +1,9 @@
 package Account;
+
 import Order.ListOfOrder;
 import Order.Order;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Member  implements Serializable {
     private static final long serialVersionUID = -6959344184946949782L;

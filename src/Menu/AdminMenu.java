@@ -5,7 +5,6 @@ import Account.ListOfMember;
 import Order.ListOfOrder;
 import Order.Order;
 import Product.ListOfProduct;
-import Product.Product;
 
 import java.util.Scanner;
 
@@ -50,7 +49,7 @@ public class AdminMenu extends GuestMenu {
                 } else if (n == 6) {
                     for (Order order : orderList.searchOrderByMember()){
                         order.viewOrder();
-                    };
+                    }
                 } else if (n == 7) {
                     orderList.searchOrderByID().setStatus();
                 } else if (n == 8) {

@@ -59,15 +59,13 @@ public class GuestMenu {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
                     String input = validateInput.inputPatternCheck("admin||member", "wrong input, please try again");
                     switch (input) {
-                        case "member": {
+                        case "member" -> {
                             Member member = listOfMember.memberLogin();
                             MemberMenu.main(member);
-                            break;
                         }
-                        case "admin": {
+                        case "admin" -> {
                             Admin admin = Admin.adminLogin();
                             AdminMenu.main(admin);
-                            break;
                         }
                     }
                     break;

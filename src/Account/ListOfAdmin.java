@@ -6,19 +6,19 @@ import java.util.ArrayList;
 public class ListOfAdmin {
     private ArrayList<Admin> adminList;
     public ListOfAdmin() {
-        this.adminList = new ArrayList<Admin>();
+        this.adminList = new ArrayList<>();
     }
 
     public ArrayList<Admin> getAdminList() {
         return adminList;
     }
     public void setAdminList(ArrayList<Admin> listOfAdmin) {
-        this.adminList = adminList;
+        this.adminList = listOfAdmin;
     }
-    public void readAdmins() throws Exception{
+    public void readAdmins() {
         String path = "src/files/admin.txt";
         try {
-            FileReader fr = new FileReader(new File(path));
+            FileReader fr = new FileReader(path);
             BufferedReader br = new BufferedReader(fr);
             String line;
             while ((line = br.readLine()) != null) {

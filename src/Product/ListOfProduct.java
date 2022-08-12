@@ -1,15 +1,15 @@
 package Product;
 
 import Functions.validateInput;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
     public ListOfProduct() {
-        productList = new ArrayList<Product>();
+        productList = new ArrayList<>();
     }
 
     public ArrayList<Product> getProductList() {
@@ -26,7 +26,7 @@ public class ListOfProduct {
         this.productList.clear();
         String path = "src/files/product.txt";
 		try {
-        FileReader fr = new FileReader(new File(path));
+        FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         String line;
 
@@ -47,11 +47,11 @@ public class ListOfProduct {
         e.printStackTrace();
         }
     }
-    public void writeProductToFile() throws IOException, ClassNotFoundException {
+    public void writeProductToFile() {
         String path = "src/files/product.txt";
 
         try {
-            FileWriter fw = new FileWriter(new File(path));
+            FileWriter fw = new FileWriter(path);
             BufferedWriter bw = new BufferedWriter(fw);
             for(Product product : productList) {
                 bw.write(product.getId() + "\t");
@@ -69,7 +69,7 @@ public class ListOfProduct {
         }
     }
 
-    public void addProduct() throws Exception{
+    public void addProduct() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name of product: ");
         String name = scanner.nextLine();
@@ -88,8 +88,7 @@ public class ListOfProduct {
         this.addProductToList(product);
     }
 
-    public void removeProduct() throws Exception{
-        Scanner scanner = new Scanner(System.in);
+    public void removeProduct() {
         while (true) {
             System.out.println("Enter the id of the product you want to remove");
             String id = validateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
@@ -108,7 +107,6 @@ public class ListOfProduct {
         }
     }
     public Product searchProductById() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product ID: ");
         String id = validateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)").toUpperCase();
         for(Product product : this.productList) {
@@ -126,7 +124,7 @@ public class ListOfProduct {
         }
     }
     public void sortProductByPrice() {
-        ArrayList<Product> tempList = new ArrayList<Product>(productList);
+        ArrayList<Product> tempList = new ArrayList<>(productList);
 
         tempList.sort((p1, p2) -> {
             if (p1.getPrice() != p2.getPrice())

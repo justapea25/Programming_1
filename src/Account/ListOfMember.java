@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ListOfMember {
     private ArrayList<Member> memberList;
     public ListOfMember() {
-        this.memberList = new ArrayList<Member>();
+        this.memberList = new ArrayList<>();
     }
 
     public ArrayList<Member> getMemberList() {
@@ -23,12 +23,12 @@ public class ListOfMember {
         this.memberList.clear();
         String path = "src/files/member.txt";
         try {
-            FileReader fr = new FileReader(new File(path));
+            FileReader fr = new FileReader(path);
             BufferedReader br = new BufferedReader(fr);
             String line;
 
             while ((line = br.readLine()) != null) {
-                String data[] = line.split("\\t+");
+                String[] data = line.split("\\t+");
                 String memberID = data[0];
                 String memberUsername = data[1];
                 String memberPassword = data[2];
@@ -44,11 +44,11 @@ public class ListOfMember {
             e.printStackTrace();
         }
     }
-    public void writeMemberToFile() throws IOException, ClassNotFoundException {
+    public void writeMemberToFile() {
         String path = "src/files/member.txt";
 
         try {
-            FileWriter fw = new FileWriter(new File(path));
+            FileWriter fw = new FileWriter(path);
             BufferedWriter bw = new BufferedWriter(fw);
             for(Member member : memberList) {
                 bw.write(member.getId() + "\t");
@@ -74,7 +74,7 @@ public class ListOfMember {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
-        System.out.print("Enter passowrd: ");
+        System.out.print("Enter password: ");
         String password = scanner.nextLine();
         System.out.print("Enter your full name: ");
         String name = scanner.nextLine();
@@ -86,7 +86,7 @@ public class ListOfMember {
         this.addMemberToList(member);
         return member;
     }
-    public Member memberLogin() throws Exception{
+    public Member memberLogin() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("Enter username: ");

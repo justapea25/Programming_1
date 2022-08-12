@@ -23,14 +23,14 @@ public class Admin implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public static Admin adminLogin() throws Exception{
+    public static Admin adminLogin() {
         Scanner scanner = new Scanner(System.in);
         ListOfAdmin listOfAdmin = new ListOfAdmin();
         listOfAdmin.readAdmins();
         while (true) {
             System.out.print("Enter username: ");
             String username = scanner.nextLine();
-            System.out.print("Enter passowrd: ");
+            System.out.print("Enter password: ");
             String password = scanner.nextLine();
             for (Admin admin : listOfAdmin.getAdminList()){
                 if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())){

@@ -33,8 +33,7 @@ public class ListOfOrder {
         }
         Collections.reverse(this.orderList);
     }
-    public Order searchOrderByID() throws IOException, ClassNotFoundException{
-        Scanner scanner = new Scanner(System.in);
+    public Order searchOrderByID() {
         System.out.print("Enter order ID: ");
         String id = validateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
         for (Order order : this.getOrderList()){
@@ -44,11 +43,10 @@ public class ListOfOrder {
         }
         return null;
     }
-    public ArrayList<Order> searchOrderByMember() throws IOException, ClassNotFoundException{
-        Scanner scanner = new Scanner(System.in);
+    public ArrayList<Order> searchOrderByMember() {
         System.out.print("Enter the member ID: ");
         String memberId = validateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
-        ArrayList<Order> orders = new ArrayList<Order>();
+        ArrayList<Order> orders = new ArrayList<>();
         for (Order order : this.getOrderList()){
             if (order.getCustomer().getId().equals(memberId)){
                 orders.add(order);
@@ -57,7 +55,7 @@ public class ListOfOrder {
         return orders;
     }
 
-    public int getTotalOrder() throws IOException, ClassNotFoundException {
+    public int getTotalOrder() {
         int count = 0;
         for (Order order : this.getOrderList()){
             if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){
@@ -67,7 +65,7 @@ public class ListOfOrder {
         return count;
     }
 
-    public double getTotalRevenue() throws IOException, ClassNotFoundException{
+    public double getTotalRevenue() {
         double totalRevenue = 0;
         for (Order order : this.getOrderList()){
             if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){

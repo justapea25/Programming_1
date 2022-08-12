@@ -66,8 +66,7 @@ public class Order implements Serializable {
     public void setStatus() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter new status: ");
-        String status = sc.nextLine();
-        this.status = status;
+        this.status = sc.nextLine();
         this.exportOrder();
     }
     public Date getDate() {
@@ -82,7 +81,7 @@ public class Order implements Serializable {
     public static void create_order(Member customer) throws Exception {
         ListOfProduct listOfProduct = new ListOfProduct();
         listOfProduct.readProducts();
-        ArrayList<Order_Item> order_items = new ArrayList<Order_Item>();
+        ArrayList<Order_Item> order_items = new ArrayList<>();
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("What do you want to buy? (enter product ID) ");

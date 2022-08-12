@@ -1,8 +1,8 @@
 package Product;
+
 import Functions.validateInput;
-import java.io.IOException;
+
 import java.io.Serializable;
-import java.util.Scanner;
 public class Product implements Serializable {
     private String id;
     private String name;
@@ -48,7 +48,6 @@ public class Product implements Serializable {
 
     public double getPrice() { return price; }
     public void setPrice() {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Enter new price: ");
         this.price = Double.parseDouble(validateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
     }
