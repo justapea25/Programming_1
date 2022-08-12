@@ -32,9 +32,11 @@ public class Order implements Serializable {
             case "Gold": this.total_price = this.total_price * 0.9;
             case "Platinum": this.total_price = this.total_price * 0.85;
         }
+        // Generate auto ID
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
-        this.id = "O" + (listOfOrder.getOrderList().size() + 1);
+        String lastID = listOfOrder.getOrderList().get(listOfOrder.getOrderList().size() - 1).getId();
+        this.id = "O" + (Integer.parseInt(lastID.substring(1)) + 1);
     }
 
     public String getId() {
