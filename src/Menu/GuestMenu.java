@@ -57,7 +57,7 @@ public class GuestMenu {
                     break;
                 } else if (n == 2) {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
-                    String input = validateInput.inputPatternCheck("admin||member", "wrong input, please try again");
+                    String input = validateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
                     switch (input) {
                         case "member" -> {
                             Member member = listOfMember.memberLogin();
@@ -74,7 +74,9 @@ public class GuestMenu {
                 } else if (n == 4) {
                     searchProductByCategory(productList);
                 } else if (n == 5) {
-                    productList.sortProductByPrice();
+                    System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
+                    String input = validateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                    productList.sortProductByPrice(input);
                 } else if (n == 6) {
                     break;
                 } else {

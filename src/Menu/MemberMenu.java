@@ -1,6 +1,7 @@
 package Menu;
 
 import Account.Member;
+import Functions.validateInput;
 import Product.ListOfProduct;
 import Order.Order;
 import Order.ListOfOrder;
@@ -24,7 +25,6 @@ public class MemberMenu extends GuestMenu {
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         ListOfOrder orderList = new ListOfOrder();
-        orderList.readOrder();
 
         while (true) {
             try {
@@ -37,11 +37,14 @@ public class MemberMenu extends GuestMenu {
                 } else if (n == 2) {
                     searchProductByCategory(productList);
                 } else if (n == 3) {
-                    productList.sortProductByPrice();
+                    System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
+                    String input = validateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                    productList.sortProductByPrice(input);
                 } else if (n == 4) {
                     Order.create_order(member);
                     member.updateMembership();
                 } else if (n == 5) {
+                    orderList.readOrder();
                     Order order = orderList.searchOrderByID();
                     if (order != null){
                         order.viewOrder();

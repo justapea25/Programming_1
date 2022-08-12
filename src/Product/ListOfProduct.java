@@ -4,6 +4,7 @@ import Functions.validateInput;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ListOfProduct {
@@ -123,14 +124,19 @@ public class ListOfProduct {
             }
         }
     }
-    public void sortProductByPrice() {
+    public void sortProductByPrice(String order) {
         ArrayList<Product> tempList = new ArrayList<>(productList);
 
+        // Sort the list in ascending order by price
         tempList.sort((p1, p2) -> {
             if (p1.getPrice() != p2.getPrice())
                 return (int) (p1.getPrice() - p2.getPrice());
             return p1.getName().compareTo(p2.getName());
         });
+        // Sort the list in descending order by price
+        if (order.equals("desc")) {
+            Collections.reverse(tempList);
+        }
 
         for (Product product : tempList) {
             product.viewProduct();

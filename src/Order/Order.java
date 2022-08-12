@@ -22,7 +22,7 @@ public class Order implements Serializable {
     public Order(Member customer, ArrayList<Order_Item> items) throws Exception{
         this.customer = customer;
         this.items = items;
-        this.status = "placed";
+        this.status = "Placed";
         this.date = new Date();
         this.total_price = 0;
         for (Order_Item item : this.items){

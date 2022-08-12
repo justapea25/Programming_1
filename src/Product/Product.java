@@ -2,8 +2,11 @@ package Product;
 
 import Functions.validateInput;
 
+import java.io.Serial;
 import java.io.Serializable;
 public class Product implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -4680854950341691008L;
     private String id;
     private String name;
     private String category;
@@ -27,9 +30,6 @@ public class Product implements Serializable {
 
     public String getName() {
         return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCategory() {

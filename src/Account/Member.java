@@ -3,9 +3,11 @@ package Account;
 import Order.ListOfOrder;
 import Order.Order;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Member  implements Serializable {
+    @Serial
     private static final long serialVersionUID = -6959344184946949782L;
     private String id;
     private String username;
@@ -87,6 +89,6 @@ public class Member  implements Serializable {
         }
     }
     public void viewMember(){
-        System.out.println("Member ID: " + this.id + "\nUsername: " + this.name + " \nAddress " + this.address + " \nMembership: " + this.membership + "\n\n");
+        System.out.println("Member ID: " + this.id + "\nUsername: " + this.name + " \nAddress: " + this.address + " \nMembership: " + this.membership + "\n\n");
     }
 }
