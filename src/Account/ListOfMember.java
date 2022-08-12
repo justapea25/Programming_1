@@ -81,7 +81,7 @@ public class ListOfMember {
         System.out.print("Enter your address: ");
         String address = scanner.nextLine();
         String lastID = this.memberList.get(this.memberList.size() - 1).getId();
-        String id = "M" + (Integer.parseInt(lastID.substring(1) + 1));
+        String id = "M" + (Integer.parseInt(lastID.substring(1)) + 1);
         Member member = new Member(id, username, password, name, address);
         this.addMemberToList(member);
         return member;
