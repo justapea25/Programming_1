@@ -88,7 +88,8 @@ public class Member  implements Serializable {
             this.membership = "Platinum";
         }
     }
-    public void viewMember(){
-        System.out.println("Member ID: " + this.id + "\nUsername: " + this.name + " \nAddress: " + this.address + " \nMembership: " + this.membership + "\n\n");
+    public void viewMember() throws Exception {
+        System.out.println("Member ID: " + this.id + "\nUsername: " + this.name + " \nAddress: " + this.address +
+                " \nMembership: " + this.membership + "\nTotal spending: " + this.getTotal_spending() + "\n\n");
     }
 }

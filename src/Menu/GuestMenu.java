@@ -5,7 +5,7 @@ import Account.ListOfMember;
 import Account.Member;
 import Product.ListOfProduct;
 import Product.Product;
-import Functions.validateInput;
+import Functions.ValidateInput;
 
 import java.util.*;
 
@@ -40,6 +40,7 @@ public class GuestMenu {
 
     public static void main() throws Exception{
         Scanner sc = new Scanner(System.in);
+        // Import data
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         ListOfMember listOfMember = new ListOfMember();
@@ -57,7 +58,7 @@ public class GuestMenu {
                     break;
                 } else if (n == 2) {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
-                    String input = validateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
+                    String input = ValidateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
                     switch (input) {
                         case "member" -> {
                             Member member = listOfMember.memberLogin();
@@ -75,7 +76,7 @@ public class GuestMenu {
                     searchProductByCategory(productList);
                 } else if (n == 5) {
                     System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
-                    String input = validateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                    String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
                     productList.sortProductByPrice(input);
                 } else if (n == 6) {
                     break;

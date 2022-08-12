@@ -1,6 +1,6 @@
 package Product;
 
-import Functions.validateInput;
+import Functions.ValidateInput;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -49,7 +49,7 @@ public class Product implements Serializable {
     public double getPrice() { return price; }
     public void setPrice() {
         System.out.print("Enter new price: ");
-        this.price = Double.parseDouble(validateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
+        this.price = Double.parseDouble(ValidateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
     }
 
     public void viewProduct() {

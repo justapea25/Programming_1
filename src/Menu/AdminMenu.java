@@ -24,6 +24,7 @@ public class AdminMenu extends GuestMenu {
 
     public static void main(Admin admin) throws Exception {
         Scanner sc = new Scanner(System.in);
+        // Import all the data
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         ListOfOrder orderList = new ListOfOrder();
@@ -67,6 +68,7 @@ public class AdminMenu extends GuestMenu {
                 e.printStackTrace();
             }
         }
+        // Write data to file
         productList.writeProductToFile();
     }
 }

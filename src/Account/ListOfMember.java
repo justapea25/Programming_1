@@ -65,7 +65,7 @@ public class ListOfMember {
             e.printStackTrace();
         }
     }
-    public void viewAllMembers(){
+    public void viewAllMembers() throws Exception {
         for (Member member : this.memberList){
             member.viewMember();
         }

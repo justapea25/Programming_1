@@ -1,9 +1,8 @@
 package Functions;
 
-import java.util.regex.*;
 import java.util.Scanner;
 
-public class validateInput {
+public class ValidateInput {
     public static String inputPatternCheck(String pattern, String message) {
         Scanner scanner = new Scanner(System.in);
         String input;

@@ -1,7 +1,7 @@
 package Menu;
 
 import Account.Member;
-import Functions.validateInput;
+import Functions.ValidateInput;
 import Product.ListOfProduct;
 import Order.Order;
 import Order.ListOfOrder;
@@ -22,6 +22,7 @@ public class MemberMenu extends GuestMenu {
 
     public static void main(Member member) throws Exception{
         Scanner sc = new Scanner(System.in);
+        // Import data
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         ListOfOrder orderList = new ListOfOrder();
@@ -38,7 +39,7 @@ public class MemberMenu extends GuestMenu {
                     searchProductByCategory(productList);
                 } else if (n == 3) {
                     System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
-                    String input = validateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                    String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
                     productList.sortProductByPrice(input);
                 } else if (n == 4) {
                     Order.create_order(member);
@@ -63,5 +64,7 @@ public class MemberMenu extends GuestMenu {
                 e.printStackTrace();
             }
         }
+        // Write data to file
+        productList.writeProductToFile();
     }
 }

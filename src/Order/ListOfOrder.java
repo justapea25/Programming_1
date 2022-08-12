@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.util.*;
 import java.io.File;
 
-import Functions.validateInput;
+import Functions.ValidateInput;
 
 public class ListOfOrder {
     private ArrayList<Order> orderList;
@@ -35,7 +35,7 @@ public class ListOfOrder {
     }
     public Order searchOrderByID() {
         System.out.print("Enter order ID: ");
-        String id = validateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
+        String id = ValidateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
         for (Order order : this.getOrderList()){
             if (id.equals(order.getId())){
                 return order;
@@ -45,7 +45,7 @@ public class ListOfOrder {
     }
     public ArrayList<Order> searchOrderByMember() {
         System.out.print("Enter the member ID: ");
-        String memberId = validateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
+        String memberId = ValidateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order : this.getOrderList()){
             if (order.getCustomer().getId().equals(memberId)){
