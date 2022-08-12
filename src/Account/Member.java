@@ -77,7 +77,7 @@ public class Member  implements Serializable {
     public void updateMembership() throws Exception{
         double total_spending = this.getTotal_spending();
         if (this.getTotal_spending() < 5000000){
-            this.membership = "none";
+            this.membership = "Normal";
         } else if (5000000 < total_spending && total_spending <= 10000000){
             this.membership = "Silver";
         }else if (10000000 < total_spending && total_spending <= 25000000){

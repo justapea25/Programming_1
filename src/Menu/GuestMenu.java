@@ -51,6 +51,7 @@ public class GuestMenu {
                 int n = sc.nextInt();
                 if (n == 1) {
                     Member member = listOfMember.register();
+                    listOfMember.writeMemberToFile();
                     MemberMenu.main(member);
                     break;
                 } else if (n == 2) {
@@ -85,6 +86,5 @@ public class GuestMenu {
                 e.printStackTrace();
             }
         }
-        listOfMember.writeMemberToFile();
     }
 }
