@@ -41,16 +41,17 @@ public class ListOfOrder {
         }
         return null;
     }
-    public Order searchOrderByMember() throws IOException, ClassNotFoundException{
+    public ArrayList<Order> searchOrderByMember() throws IOException, ClassNotFoundException{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the member ID: ");
         String memberId = scanner.nextLine();
+        ArrayList<Order> orders = new ArrayList<Order>();
         for (Order order : this.getOrderList()){
             if (order.getCustomer().getId().equals(memberId)){
-                return order;
+                orders.add(order);
             }
         }
-        return null;
+        return orders;
     }
 
     public int getTotalOrder() throws IOException, ClassNotFoundException {

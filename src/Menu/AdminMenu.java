@@ -45,7 +45,9 @@ public class AdminMenu extends GuestMenu {
                 } else if (n == 4) {
                     productList.addProduct();
                 } else if (n == 5) {
-                    orderList.searchOrderByMember();
+                    for (Order order : orderList.searchOrderByMember()){
+                        order.viewOrder();
+                    };
                 } else if (n == 6) {
                     orderList.searchOrderByID().setStatus();
                 } else if (n == 7) {
