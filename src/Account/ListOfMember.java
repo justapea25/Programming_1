@@ -76,7 +76,7 @@ public class ListOfMember {
         String username = scanner.nextLine();
         System.out.print("Enter passowrd: ");
         String password = scanner.nextLine();
-        System.out.print("Enter your name: ");
+        System.out.print("Enter your full name: ");
         String name = scanner.nextLine();
         System.out.print("Enter your address: ");
         String address = scanner.nextLine();
