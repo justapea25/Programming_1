@@ -129,8 +129,8 @@ public class Order implements Serializable, Comparable<Order> {
         System.out.println("----------------------\n");
     }
     @Override
-    public int compareTo(Order order) {
-        return this.getId().compareTo(order.getId());
+    public int compareTo(Order order){
+        return Integer.parseInt(this.getId().substring(1))-(Integer.parseInt(order.getId().substring(1)));
     }
     public static void main(String[] args) throws Exception{
         ListOfOrder listOfOrder = new ListOfOrder();

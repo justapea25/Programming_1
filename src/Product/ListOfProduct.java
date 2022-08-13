@@ -88,17 +88,9 @@ public class ListOfProduct {
     }
 
     public void removeProduct() {
-        while (true) {
-            System.out.println("Enter the id of the product you want to remove");
-            String id = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
-            if (productList.removeIf(product -> product.getId().equals(id))) {
-                System.out.println("Product removed!");
-                break;
-            } else {
-                System.out.println("Invalid ID. Please try again.");
-            }
-        }
-        this.writeProductToFile();
+        Product product = this.searchProductById();
+        this.productList.remove(product);
+        System.out.println("Product removed!");
     }
     public void viewAllProduct() {
         for (Product product : productList) {
