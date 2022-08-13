@@ -13,7 +13,7 @@ public class GuestMenu {
     public static void printMenu() {
         System.out.println("1 - Register for a new account");
         System.out.println("2 - Login to existing account");
-        System.out.println("3 - List all available products"); // Then customer can see a product detail
+        System.out.println("3 - List all available products");
         System.out.println("4 - View product details");
         System.out.println("5 - Search products by a category");
         System.out.println("6 - Sort all products by price");
