@@ -93,6 +93,8 @@ public class Order implements Serializable {
                     Order_Item order_item = new Order_Item(product, quantity);
                     order_items.add(order_item);
                 }
+//                else
+//                    System.out.println("We don't have that product");
             }
             System.out.print("Do you want to buy anything else? (y/n): ");
             String response = ValidateInput.inputPatternCheck("y||n", "Only enter y or n");
