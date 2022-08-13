@@ -133,12 +133,5 @@ public class Order implements Serializable, Comparable<Order> {
     public int compareTo(Order order){
         return Integer.parseInt(this.getId().substring(1))-(Integer.parseInt(order.getId().substring(1)));
     }
-    public static void main(String[] args) throws Exception{
-        ListOfOrder listOfOrder = new ListOfOrder();
-        listOfOrder.readOrder();
-        for (Order order : listOfOrder.getOrderList()){
-            System.out.println(order.getId());
-        }
-    }
 }
 
