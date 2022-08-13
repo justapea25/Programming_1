@@ -96,7 +96,7 @@ public class Order implements Serializable {
                     productExist = true;
                 }
             }
-            if (productExist == false) { System.out.println("Product does not exist."); }
+            if (!productExist) { System.out.println("Product does not exist."); }
             System.out.print("Do you want to buy anything else? (y/n): ");
             String response = ValidateInput.inputPatternCheck("y||n", "Only enter y or n");
             if (response.equals("n")) {break;}

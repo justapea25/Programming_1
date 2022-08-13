@@ -110,8 +110,8 @@ public class ListOfProduct {
     public Product searchProductById() {
         System.out.println("Enter product ID: ");
         String id = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)").toUpperCase();
-        for(Product product : this.productList) {
-            if(product.getId().equals(id)) {
+        for (Product product : this.productList) {
+            if (product.getId().equals(id)) {
                 return product;
             }
         }

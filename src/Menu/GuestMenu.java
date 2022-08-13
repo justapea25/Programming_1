@@ -51,13 +51,13 @@ public class GuestMenu {
                 System.out.println("Welcome to our tech store");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
-                int n = Integer.parseInt(sc.nextLine());
-                if (n == 1) {
+                String n = sc.nextLine();
+                if (n.equals("1")) {
                     Member member = listOfMember.register();
                     listOfMember.writeMemberToFile();
                     MemberMenu.main(member);
                     break;
-                } else if (n == 2) {
+                } else if (n.equals("2")) {
                     System.out.println("Do you want to login as admin or member? (admin/member)");
                     String input = ValidateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
                     switch (input) {
@@ -71,7 +71,7 @@ public class GuestMenu {
                         }
                     }
                     break;
-                } else if (n == 3) {
+                } else if (n.equals("3")) {
                     productList.viewAllProduct();
                 } else if (n == 4) {
                     productList.displayProductById();
@@ -81,7 +81,7 @@ public class GuestMenu {
                     System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
                     String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
                     productList.sortProductByPrice(input);
-                } else if (n == 7) {
+                } else if (n.equals("7")) {
                     break;
                 } else {
                     System.out.println("No matching selection, please try again");
