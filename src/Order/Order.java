@@ -10,7 +10,7 @@ import Account.Member;
 import Functions.ValidateInput;
 import Product.*;
 
-public class Order implements Serializable {
+public class Order implements Serializable, Comparable<Order> {
     private static final long serialVersionUID = -3831393805083874427L;
     private String id;
     private Member customer;
@@ -67,6 +67,7 @@ public class Order implements Serializable {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter new status: ");
         this.status = sc.nextLine();
+        this.viewOrder();
         this.exportOrder();
     }
     public Date getDate() {
@@ -127,6 +128,16 @@ public class Order implements Serializable {
         System.out.println("Total price: " + String.format("%,.0f", this.total_price) + " VND");
         System.out.println("----------------------\n");
     }
-
+    @Override
+    public int compareTo(Order order) {
+        return this.getId().compareTo(order.getId());
+    }
+    public static void main(String[] args) throws Exception{
+        ListOfOrder listOfOrder = new ListOfOrder();
+        listOfOrder.readOrder();
+        for (Order order : listOfOrder.getOrderList()){
+            System.out.println(order.getId());
+        }
+    }
 }
 

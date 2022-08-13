@@ -31,28 +31,36 @@ public class ListOfOrder {
                 this.orderList.add(order);
             }
         }
-        Collections.reverse(this.orderList);
+        Collections.sort(this.orderList);
     }
     public Order searchOrderByID() {
-        System.out.print("Enter order ID: ");
-        String id = ValidateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
-        for (Order order : this.getOrderList()){
-            if (id.equals(order.getId())){
-                return order;
+        while (true) {
+            System.out.print("Enter order ID: ");
+            String id = ValidateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
+            for (Order order : this.getOrderList()) {
+                if (id.equals(order.getId())) {
+                    return order;
+                }
             }
+            System.out.println("Order does not exist. Try again.");
         }
-        return null;
     }
     public ArrayList<Order> searchOrderByMember() {
         System.out.print("Enter the member ID: ");
         String memberId = ValidateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
         ArrayList<Order> orders = new ArrayList<>();
+        boolean exist = false;
         for (Order order : this.getOrderList()){
             if (order.getCustomer().getId().equals(memberId)){
                 orders.add(order);
+                exist = true;
             }
         }
-        return orders;
+        if (!exist) {
+            System.out.println("Member does not exist");
+            return null;
+        }
+        else {return orders;}
     }
 
     public int getTotalOrder() {

@@ -52,8 +52,6 @@ public class MemberMenu extends GuestMenu {
                     Order order = orderList.searchOrderByID();
                     if (order != null){
                         order.viewOrder();
-                    } else {
-                        System.out.println("There is no order with such ID.");
                     }
                 } else if (n.equals("7")) {
                     member.viewMember();

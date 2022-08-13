@@ -20,25 +20,6 @@ public class GuestMenu {
         System.out.println("7 - Exit");
     }
 
-    public static void searchProductByCategory(ListOfProduct productList) {
-
-        // Print all the categories of product
-        System.out.println("Choose the category you want to see products");
-        Set<String> categories = new HashSet<>();
-        for (Product product : productList.getProductList()) {
-            categories.add(product.getCategory());
-        }
-        for (String category : categories) {
-            System.out.println(category);
-        }
-
-        // Get the category user want to see
-        Scanner s = new Scanner(System.in);
-        String chosenCategory = s.next();
-        productList.filterProductByCategory(chosenCategory);
-    }
-
-
     public static void main() throws Exception{
         Scanner sc = new Scanner(System.in);
         // Import data
@@ -73,11 +54,11 @@ public class GuestMenu {
                     break;
                 } else if (n.equals("3")) {
                     productList.viewAllProduct();
-                } else if (n == 4) {
-                    productList.displayProductById();
-                } else if (n == 5) {
-                    searchProductByCategory(productList);
-                } else if (n == 6) {
+                } else if (n.equals("4")) {
+                    productList.searchProductById().viewProduct("all");
+                } else if (n.equals("5")) {
+                    productList.searchProductByCategory();
+                } else if (n.equals("6")) {
                     System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
                     String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
                     productList.sortProductByPrice(input);

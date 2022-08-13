@@ -3,9 +3,7 @@ package Product;
 import Functions.ValidateInput;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class ListOfProduct {
     private ArrayList<Product> productList;
@@ -117,19 +115,29 @@ public class ListOfProduct {
         }
         return null;
     }
-    public void displayProductById() {
-        System.out.println("Enter product ID: ");
-        String id = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)").toUpperCase();
-        for(Product product : this.productList) {
-            if(product.getId().equals(id)) {
-                product.viewProduct("all");
-            }
-        }
-    }
 
-    public void filterProductByCategory(String category) {
-        for(Product product : productList) {
-            if(product.getCategory().equals(category)) {
+    public void searchProductByCategory() {
+        // Print all the categories of product
+        System.out.println("Choose the category you want to see products");
+        Set<String> categories = new HashSet<>();
+        for (Product product : this.productList) {
+            categories.add(product.getCategory());
+        }
+        for (String category : categories) {
+            System.out.println(category);
+        }
+        String chosenCategory = "";
+        Scanner s = new Scanner(System.in);
+        // Get the category user want to see
+        while (true){
+            chosenCategory = s.nextLine();
+            if (categories.contains(chosenCategory)){
+                break;
+            }
+            System.out.println("Please enter a valid category");
+        }
+        for(Product product : this.productList) {
+            if(product.getCategory().equals(chosenCategory)) {
                 product.viewProduct("category");
             }
         }

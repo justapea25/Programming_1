@@ -6,6 +6,7 @@ import Order.ListOfOrder;
 import Order.Order;
 import Product.ListOfProduct;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminMenu extends GuestMenu {
@@ -37,31 +38,34 @@ public class AdminMenu extends GuestMenu {
                 System.out.println("Welcome back: " + admin.getUsername());
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
-                int n = Integer.parseInt(sc.nextLine());
-                if (n == 1) {
+                String n = sc.nextLine();
+                if (n.equals("1")) {
                     productList.viewAllProduct();
-                } else if (n == 2) {
+                } else if (n.equals("2")) {
                     orderList.viewAllOrders();
-                } else if (n == 3) {
+                } else if (n.equals("3")) {
                     memberList.viewAllMembers();
                 } else if (n.equals("4")) {
                     productList.searchProductById().viewProduct("all");
                 } else if (n.equals("5")) {
                     productList.addProduct();
-                } else if (n == 6) {
+                } else if (n.equals("6")) {
                     productList.removeProduct();
-                } else if (n == 7) {
-                    for (Order order : orderList.searchOrderByMember()){
-                        order.viewOrder();
+                } else if (n.equals("7")) {
+                    ArrayList<Order> orders = orderList.searchOrderByMember();
+                    if (orders != null) {
+                        for (Order order : orders) {
+                            order.viewOrder();
+                        }
                     }
-                } else if (n == 8) {
+                } else if (n.equals("8")) {
                     orderList.searchOrderByID().setStatus();
-                } else if (n == 9) {
+                } else if (n.equals("9")) {
                     productList.searchProductById().setPrice();
-                } else if (n == 10) {
+                } else if (n.equals("10")) {
                     System.out.println("Today's revenue: " + String.format("%,.0f", orderList.getTotalRevenue()) + " VND");
                     System.out.println("Today's total number of order: " + orderList.getTotalOrder());
-                } else if (n == 11) {
+                } else if (n.equals("11")) {
                     break;
                 } else {
                     System.out.println("No matching selection, please try again");
