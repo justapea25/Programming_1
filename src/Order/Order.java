@@ -88,14 +88,15 @@ public class Order implements Serializable {
             String item = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
             System.out.print("Quantity? ");
             int quantity = Integer.parseInt(ValidateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
+            boolean productExist = false;
             for (Product product : listOfProduct.getProductList()) {
                 if (item.equals(product.getId())) {
                     Order_Item order_item = new Order_Item(product, quantity);
                     order_items.add(order_item);
+                    productExist = true;
                 }
-//                else
-//                    System.out.println("We don't have that product");
             }
+            if (productExist == false) { System.out.println("Product does not exist."); }
             System.out.print("Do you want to buy anything else? (y/n): ");
             String response = ValidateInput.inputPatternCheck("y||n", "Only enter y or n");
             if (response.equals("n")) {break;}
