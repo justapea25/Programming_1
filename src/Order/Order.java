@@ -128,6 +128,7 @@ public class Order implements Serializable, Comparable<Order> {
         System.out.println("Total price: " + String.format("%,.0f", this.total_price) + " VND");
         System.out.println("----------------------\n");
     }
+
     @Override
     public int compareTo(Order order){
         return Integer.parseInt(this.getId().substring(1))-(Integer.parseInt(order.getId().substring(1)));
