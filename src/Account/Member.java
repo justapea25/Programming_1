@@ -90,6 +90,6 @@ public class Member  implements Serializable {
     }
     public void viewMember() throws Exception {
         System.out.println("Member ID: " + this.id + "\nName: " + this.name + " \nAddress: " + this.address +
-                " \nMembership: " + this.membership + "\nTotal spending: " + String.format("%,.0f",this.getTotal_spending()) + "\n\n");
+                " \nMembership: " + this.membership + "\nTotal spending: " + String.format("%,.0f",this.getTotal_spending()) + " VND" + "\n\n");
     }
 }

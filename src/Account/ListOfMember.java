@@ -1,11 +1,10 @@
 package Account;
 
-import Product.Product;
+import Functions.ValidateInput;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class ListOfMember {
     private ArrayList<Member> memberList;
@@ -89,7 +88,7 @@ public class ListOfMember {
             System.out.println("Username already exists!");
         }
         System.out.print("Enter password: ");
-        String password = scanner.nextLine();
+        String password = ValidateInput.inputPatternCheck(".{6,}", "Password must be at least 6 characters");
         System.out.print("Enter your full name: ");
         String name = scanner.nextLine();
         System.out.print("Enter your address: ");
