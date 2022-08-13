@@ -33,7 +33,7 @@ public class MemberMenu extends GuestMenu {
                 System.out.println("Welcome to our tech store: " + member.getUsername() + " (Membership: " + member.getMembership() + ")");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
-                int n = sc.nextInt();
+                int n = Integer.parseInt(sc.nextLine());
                 if (n == 1) {
                     productList.viewAllProduct();
                 } else if (n == 2) {
@@ -66,6 +66,8 @@ public class MemberMenu extends GuestMenu {
                 System.out.println("Error: " + e.getMessage());
                 e.printStackTrace();
             }
+            System.out.println("Press enter to continue");
+            String back = sc.nextLine();
         }
         // Write data to file
         productList.writeProductToFile();

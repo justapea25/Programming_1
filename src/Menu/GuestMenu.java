@@ -51,7 +51,7 @@ public class GuestMenu {
                 System.out.println("Welcome to our tech store");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
-                int n = sc.nextInt();
+                int n = Integer.parseInt(sc.nextLine());
                 if (n == 1) {
                     Member member = listOfMember.register();
                     listOfMember.writeMemberToFile();
@@ -90,6 +90,8 @@ public class GuestMenu {
                 System.out.println("Error: " + e.getMessage());
                 e.printStackTrace();
             }
+            System.out.println("Press enter to continue");
+            String back = sc.nextLine();
         }
     }
 }
