@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class AdminMenu extends GuestMenu {
     public static void printMenu() {
-        System.out.println("1 - List all available products"); // Then customer can see a product detail
+        System.out.println("1 - List all available products");
         System.out.println("2 - List all orders");
         System.out.println("3 - List all members");
         System.out.println("4 - View product details");

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class MemberMenu extends GuestMenu {
     public static void printMenu() {
-        System.out.println("1 - List all available products"); // Then customer can see a product detail
+        System.out.println("1 - List all available products");
         System.out.println("2 - View product details");
         System.out.println("3 - Search products by a category");
         System.out.println("4 - Sort all products by price");
