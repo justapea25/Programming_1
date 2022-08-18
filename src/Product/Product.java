@@ -8,7 +8,7 @@ public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = -4680854950341691008L;
     private String id;
-    private String name;
+    private final String name;
     private String category;
     private String detail;
     private double price;

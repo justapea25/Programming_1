@@ -3,11 +3,10 @@ package Menu;
 import Account.Admin;
 import Account.ListOfMember;
 import Account.Member;
-import Product.ListOfProduct;
-import Product.Product;
 import Functions.ValidateInput;
+import Product.ListOfProduct;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class GuestMenu {
     public static void printMenu() {
@@ -27,45 +26,55 @@ public class GuestMenu {
         productList.readProducts();
         ListOfMember listOfMember = new ListOfMember();
         listOfMember.readMembers();
+
+        label:
         while (true) {
             try {
                 System.out.println("Welcome to our tech store");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 String n = sc.nextLine();
-                if (n.equals("1")) {
-                    Member member = listOfMember.register();
-                    listOfMember.writeMemberToFile();
-                    MemberMenu.main(member);
-                    break;
-                } else if (n.equals("2")) {
-                    System.out.println("Do you want to login as admin or member? (admin/member)");
-                    String input = ValidateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
-                    switch (input) {
-                        case "member" -> {
-                            Member member = listOfMember.memberLogin();
-                            MemberMenu.main(member);
+                switch (n) {
+                    case "1":
+                        Member newMem = listOfMember.register();
+                        listOfMember.writeMemberToFile();
+                        MemberMenu.main(newMem);
+                        break label;
+                    case "2": {
+                        System.out.println("Do you want to login as admin or member? (admin/member)");
+                        String input = ValidateInput.inputPatternCheck("admin||member", "Wrong input, please try again");
+                        switch (input) {
+                            case "member" -> {
+                                Member mem = listOfMember.memberLogin();
+                                MemberMenu.main(mem);
+                            }
+                            case "admin" -> {
+                                Admin admin = Admin.adminLogin();
+                                AdminMenu.main(admin);
+                            }
                         }
-                        case "admin" -> {
-                            Admin admin = Admin.adminLogin();
-                            AdminMenu.main(admin);
-                        }
+                        break label;
                     }
-                    break;
-                } else if (n.equals("3")) {
-                    productList.viewAllProduct();
-                } else if (n.equals("4")) {
-                    productList.searchProductById().viewProduct("all");
-                } else if (n.equals("5")) {
-                    productList.searchProductByCategory();
-                } else if (n.equals("6")) {
-                    System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
-                    String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
-                    productList.sortProductByPrice(input);
-                } else if (n.equals("7")) {
-                    break;
-                } else {
-                    System.out.println("No matching selection, please try again");
+                    case "3":
+                        productList.viewAllProduct();
+                        break;
+                    case "4":
+                        productList.searchProductById().viewProduct("all");
+                        break;
+                    case "5":
+                        productList.searchProductByCategory();
+                        break;
+                    case "6": {
+                        System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
+                        String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                        productList.sortProductByPrice(input);
+                        break;
+                    }
+                    case "7":
+                        break label;
+                    default:
+                        System.out.println("No matching selection, please try again");
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());

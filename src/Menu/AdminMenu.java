@@ -33,42 +33,56 @@ public class AdminMenu extends GuestMenu {
         orderList.readOrder();
         ListOfMember memberList = new ListOfMember();
         memberList.readMembers();
+
+        label:
         while (true) {
             try {
                 System.out.println("Welcome back: " + admin.getUsername());
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 String n = sc.nextLine();
-                if (n.equals("1")) {
-                    productList.viewAllProduct();
-                } else if (n.equals("2")) {
-                    orderList.viewAllOrders();
-                } else if (n.equals("3")) {
-                    memberList.viewAllMembers();
-                } else if (n.equals("4")) {
-                    productList.searchProductById().viewProduct("all");
-                } else if (n.equals("5")) {
-                    productList.addProduct();
-                } else if (n.equals("6")) {
-                    productList.removeProduct();
-                } else if (n.equals("7")) {
-                    ArrayList<Order> orders = orderList.searchOrderByMember();
-                    if (orders != null) {
-                        for (Order order : orders) {
-                            order.viewOrder();
+                switch (n) {
+                    case "1":
+                        productList.viewAllProduct();
+                        break;
+                    case "2":
+                        orderList.viewAllOrders();
+                        break;
+                    case "3":
+                        memberList.viewAllMembers();
+                        break;
+                    case "4":
+                        productList.searchProductById().viewProduct("all");
+                        break;
+                    case "5":
+                        productList.addProduct();
+                        break;
+                    case "6":
+                        productList.removeProduct();
+                        break;
+                    case "7":
+                        ArrayList<Order> orders = orderList.searchOrderByMember();
+                        if (orders != null) {
+                            for (Order order : orders) {
+                                order.viewOrder();
+                            }
                         }
-                    }
-                } else if (n.equals("8")) {
-                    orderList.searchOrderByID().setStatus();
-                } else if (n.equals("9")) {
-                    productList.searchProductById().setPrice();
-                } else if (n.equals("10")) {
-                    System.out.println("Today's revenue: " + String.format("%,.0f", orderList.getTotalRevenue()) + " VND");
-                    System.out.println("Today's total number of order: " + orderList.getTotalOrder());
-                } else if (n.equals("11")) {
-                    break;
-                } else {
-                    System.out.println("No matching selection, please try again");
+                        break;
+                    case "8":
+                        orderList.searchOrderByID().setStatus();
+                        break;
+                    case "9":
+                        productList.searchProductById().setPrice();
+                        break;
+                    case "10":
+                        System.out.println("Today's revenue: " + String.format("%,.0f", orderList.getTotalRevenue()) + " VND");
+                        System.out.println("Today's total number of order: " + orderList.getTotalOrder());
+                        break;
+                    case "11":
+                        break label;
+                    default:
+                        System.out.println("No matching selection, please try again");
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());

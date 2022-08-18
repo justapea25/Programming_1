@@ -21,44 +21,54 @@ public class MemberMenu extends GuestMenu {
     }
 
 
-    public static void main(Member member) throws Exception{
+    public static void main(Member member) {
         Scanner sc = new Scanner(System.in);
         // Import data
         ListOfProduct productList = new ListOfProduct();
         productList.readProducts();
         ListOfOrder orderList = new ListOfOrder();
 
+        label:
         while (true) {
             try {
                 System.out.println("Welcome to our tech store: " + member.getUsername() + " (Membership: " + member.getMembership() + ")");
                 printMenu();
                 System.out.print("Please enter a number correspond to any action as shown below!\n");
                 String n = sc.nextLine();
-                if (n.equals("1")) {
-                    productList.viewAllProduct();
-                } else if (n.equals("2")) {
-                    productList.searchProductById().viewProduct("all");
-                } else if (n.equals("3")) {
-                    productList.searchProductByCategory();
-                } else if (n.equals("4")) {
-                    System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
-                    String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
-                    productList.sortProductByPrice(input);
-                } else if (n.equals("5")) {
-                    Order.create_order(member);
-                    member.updateMembership();
-                } else if (n.equals("6")) {
-                    orderList.readOrder();
-                    Order order = orderList.searchOrderByID();
-                    if (order != null){
-                        order.viewOrder();
-                    }
-                } else if (n.equals("7")) {
-                    member.viewMember();
-                } else if (n.equals("8")) {
-                    break;
-                } else {
-                    System.out.println("No matching selection, please try again");
+                switch (n) {
+                    case "1":
+                        productList.viewAllProduct();
+                        break;
+                    case "2":
+                        productList.searchProductById().viewProduct("all");
+                        break;
+                    case "3":
+                        productList.searchProductByCategory();
+                        break;
+                    case "4":
+                        System.out.println("Please choose to sort products by price in ascending or descending order (asc/desc)");
+                        String input = ValidateInput.inputPatternCheck("asc||desc", "Wrong input, please try again");
+                        productList.sortProductByPrice(input);
+                        break;
+                    case "5":
+                        Order.create_order(member);
+                        member.updateMembership();
+                        break;
+                    case "6":
+                        orderList.readOrder();
+                        Order order = orderList.searchOrderByID();
+                        if (order != null) {
+                            order.viewOrder();
+                        }
+                        break;
+                    case "7":
+                        member.viewMember();
+                        break;
+                    case "8":
+                        break label;
+                    default:
+                        System.out.println("No matching selection, please try again");
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());

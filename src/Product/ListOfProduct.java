@@ -120,7 +120,7 @@ public class ListOfProduct {
         for (String category : categories) {
             System.out.println(category);
         }
-        String chosenCategory = "";
+        String chosenCategory;
         Scanner s = new Scanner(System.in);
         // Get the category user want to see
         while (true){

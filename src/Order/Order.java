@@ -84,7 +84,6 @@ public class Order implements Serializable, Comparable<Order> {
         listOfProduct.readProducts();
         ArrayList<Order_Item> order_items = new ArrayList<>();
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("What do you want to buy? (enter product ID) ");
             String item = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");
             System.out.print("Quantity? ");
