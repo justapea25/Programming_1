@@ -78,10 +78,15 @@ public class ListOfProduct {
         String detail = scanner.nextLine();
         System.out.print("Price of product: ");
         double price = scanner.nextDouble();
-
+        String id;
         // Auto generate ID
-        String lastID = this.productList.get(this.productList.size()-1).getId();
-        String id = "P"+(Integer.parseInt(lastID.substring(1)) + 1);
+        if (productList.size() < 1) {
+            id = "P1";
+        } else {
+            String lastID = this.productList.get(this.productList.size()-1).getId();
+            id = "P"+(Integer.parseInt(lastID.substring(1)) + 1);
+        }
+
 
         Product product = new Product(id, name, category, detail, price);
         this.addProductToList(product);

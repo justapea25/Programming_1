@@ -36,8 +36,12 @@ public class Order implements Serializable, Comparable<Order> {
         // Generate auto ID
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
-        String lastID = listOfOrder.getOrderList().get(listOfOrder.getOrderList().size() - 1).getId();
-        this.id = "O" + (Integer.parseInt(lastID.substring(1)) + 1);
+        if (listOfOrder.getOrderList().size() < 1) {
+            this.id = "O1";
+        } else {
+            String lastID = listOfOrder.getOrderList().get(listOfOrder.getOrderList().size() - 1).getId();
+            this.id = "O" + (Integer.parseInt(lastID.substring(1)) + 1);
+        }
     }
 
     public String getId() {
