@@ -3,3 +3,4 @@ M2	huynh	huynh24122003	Quoc Huynh	Dong Da
 M3	hminh25	minh12345	Hong Minh	Ha Noi	
 M4	hoangdang03	hoang123	Dang Thai Hoang	Ha Noi	
 M5	huydoan2k3	huy1234	Doan Huy	Ha Noi	
+M6	test123	minh123	Dau Hoang Minh	Son Tay, Ha Noi	
