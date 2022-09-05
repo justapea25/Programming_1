@@ -88,6 +88,8 @@ public class AdminMenu extends GuestMenu {
                 System.out.println("Error: " + e.getMessage());
                 e.printStackTrace();
             }
+
+            // Press enter to go back to menu
             System.out.println("Press enter to continue");
             String back = sc.nextLine();
         }

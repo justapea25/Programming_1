@@ -52,6 +52,7 @@ public class Product implements Serializable {
         this.price = Double.parseDouble(ValidateInput.inputPatternCheck("[0-9]*", "Only enter numbers!"));
     }
 
+    // Display a product's information
     public void viewProduct(String display) {
         switch (display) {
             case "all" ->

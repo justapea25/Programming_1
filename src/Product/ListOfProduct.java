@@ -21,6 +21,7 @@ public class ListOfProduct {
         this.productList.add(p);
     }
 
+    // Read all product from the file
     public void readProducts() {
         this.productList.clear();
         String path = "src/files/product.txt";
@@ -46,6 +47,8 @@ public class ListOfProduct {
         e.printStackTrace();
         }
     }
+
+    // Write product data back to file
     public void writeProductToFile() {
         String path = "src/files/product.txt";
 
@@ -68,6 +71,7 @@ public class ListOfProduct {
         }
     }
 
+    // Add new product to the product list
     public void addProduct() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name of product: ");

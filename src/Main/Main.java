@@ -15,6 +15,7 @@ public class Main {
         System.out.println("s3924345, Doan Huy ");
         System.out.println("--------------------------------------------------------------");
 
+        // Access the guest menu
         GuestMenu.main();
 
         }
