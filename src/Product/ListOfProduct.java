@@ -91,21 +91,26 @@ public class ListOfProduct {
             id = "P"+(Integer.parseInt(lastID.substring(1)) + 1);
         }
 
-
+        // Add generated product to the list
         Product product = new Product(id, name, category, detail, price);
         this.addProductToList(product);
     }
 
+    // Remove the product based on its id
     public void removeProduct() {
         Product product = this.searchProductById();
         this.productList.remove(product);
         System.out.println("Product removed!");
     }
+
+    // VIew all the product in the list
     public void viewAllProduct() {
         for (Product product : productList) {
             product.viewProduct("general");
         }
     }
+
+    // Search a product based on its id
     public Product searchProductById() {
         while (true) {
             System.out.print("Enter product ID: ");
@@ -119,6 +124,7 @@ public class ListOfProduct {
         }
     }
 
+    // Search products based on their category
     public void searchProductByCategory() {
         // Print all the categories of product
         System.out.println("Choose the category you want to see products");
@@ -131,6 +137,7 @@ public class ListOfProduct {
         }
         String chosenCategory;
         Scanner s = new Scanner(System.in);
+
         // Get the category user want to see
         while (true){
             chosenCategory = s.nextLine();
@@ -139,12 +146,14 @@ public class ListOfProduct {
             }
             System.out.println("Please enter a valid category");
         }
-        for(Product product : this.productList) {
+        for (Product product : this.productList) {
             if(product.getCategory().equals(chosenCategory)) {
                 product.viewProduct("category");
             }
         }
     }
+
+    // Sort all product by price
     public void sortProductByPrice(String order) {
         ArrayList<Product> tempList = new ArrayList<>(productList);
 

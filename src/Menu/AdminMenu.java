@@ -91,7 +91,7 @@ public class AdminMenu extends GuestMenu {
 
             // Press enter to go back to menu
             System.out.println("Press enter to continue");
-            String back = sc.nextLine();
+            sc.nextLine();
         }
         // Write data to file
         productList.writeProductToFile();
