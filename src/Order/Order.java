@@ -124,12 +124,14 @@ public class Order implements Serializable, Comparable<Order> {
         order.exportOrder();
     }
     public void exportOrder() throws Exception{
+        // write order to new obj file
         FileOutputStream fo = new FileOutputStream("src/files/Orders/"+this.id+".obj");
         ObjectOutputStream orderOut = new ObjectOutputStream(fo);
         orderOut.writeObject(this);
         orderOut.close();
     }
     public void viewOrder() {
+        // display order information
         String pattern = "dd-MM-yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         System.out.println("\n----------------------");
