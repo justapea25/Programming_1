@@ -15,6 +15,7 @@ public class ListOfAdmin {
     public void setAdminList(ArrayList<Admin> listOfAdmin) {
         this.adminList = listOfAdmin;
     }
+    //Reads all admin objects from admin.txt and stores them in an arraylist
     public void readAdmins() {
         String path = "src/files/admin.txt";
         try {

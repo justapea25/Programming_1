@@ -23,6 +23,7 @@ public class Admin implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    //Takes in user input and validates username/password
     public static Admin adminLogin() {
         Scanner scanner = new Scanner(System.in);
         ListOfAdmin listOfAdmin = new ListOfAdmin();

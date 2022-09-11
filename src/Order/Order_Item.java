@@ -3,7 +3,7 @@ package Order;
 import Product.Product;
 
 import java.io.Serializable;
-
+//Used for storing a product and its quantity in a specific order
 public class Order_Item implements Serializable {
     private Product product;
     private int quantity;
