@@ -2,6 +2,7 @@ package Account;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ListOfAdmin {
     private ArrayList<Admin> adminList;
@@ -34,6 +35,22 @@ public class ListOfAdmin {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+    //Takes in user input and validates username/password
+    public Admin adminLogin() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Enter username: ");
+            String username = scanner.nextLine();
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            for (Admin admin : this.getAdminList()){
+                if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())){
+                    return admin;
+                }
+            }
+            System.out.println("Invalid username/password. Please try again.");
         }
     }
 }

@@ -1,6 +1,7 @@
 package Menu;
 
 import Account.Admin;
+import Account.ListOfAdmin;
 import Account.ListOfMember;
 import Account.Member;
 import Functions.ValidateInput;
@@ -26,6 +27,8 @@ public class GuestMenu {
         productList.readProducts();
         ListOfMember listOfMember = new ListOfMember();
         listOfMember.readMembers();
+        ListOfAdmin listOfAdmin = new ListOfAdmin();
+        listOfAdmin.readAdmins();
 
         label:
         while (true) {
@@ -49,7 +52,7 @@ public class GuestMenu {
                                 MemberMenu.main(mem);
                             }
                             case "admin" -> {
-                                Admin admin = Admin.adminLogin();
+                                Admin admin = listOfAdmin.adminLogin();
                                 AdminMenu.main(admin);
                             }
                         }
