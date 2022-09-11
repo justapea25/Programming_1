@@ -34,7 +34,7 @@ public class AdminMenu extends GuestMenu {
         ListOfMember memberList = new ListOfMember();
         memberList.readMembers();
 
-        label:
+        label: // Label to indicate the loop to break later
         while (true) {
             try {
                 System.out.println("Welcome back: " + admin.getUsername());
@@ -79,7 +79,7 @@ public class AdminMenu extends GuestMenu {
                         System.out.println("Today's total number of order: " + orderList.getTotalOrder());
                         break;
                     case "11":
-                        break label;
+                        break label; // break the labelled while loop
                     default:
                         System.out.println("No matching selection, please try again");
                         break;

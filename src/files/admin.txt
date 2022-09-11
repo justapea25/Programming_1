@@ -2,3 +2,4 @@ hoangminh	a123456
 quochuynh	a123456
 hoangdang	a123456
 doanhuy	a123456
+admintest	test123

@@ -30,7 +30,7 @@ public class GuestMenu {
         ListOfAdmin listOfAdmin = new ListOfAdmin();
         listOfAdmin.readAdmins();
 
-        label:
+        label: // Label to indicate the loop to break later
         while (true) {
             try {
                 System.out.println("Welcome to our tech store");
@@ -49,11 +49,11 @@ public class GuestMenu {
                         switch (input) {
                             case "member" -> {
                                 Member mem = listOfMember.memberLogin();
-                                MemberMenu.main(mem);
+                                MemberMenu.main(mem); // Direct to the member menu
                             }
                             case "admin" -> {
                                 Admin admin = listOfAdmin.adminLogin();
-                                AdminMenu.main(admin);
+                                AdminMenu.main(admin); // Direct to the admin menu
                             }
                         }
                         break label;
@@ -74,7 +74,7 @@ public class GuestMenu {
                         break;
                     }
                     case "7":
-                        break label;
+                        break label; // break the labelled while loop
                     default:
                         System.out.println("No matching selection, please try again");
                         break;

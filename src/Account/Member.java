@@ -67,7 +67,7 @@ public class Member  implements Serializable {
         this.membership = membership;
     }
 
-    //Reads all orders made by the member and returns the total spending
+    // Reads all orders made by the member and returns the total spending
     public double getTotal_spending() throws Exception {
         ListOfOrder listOfOrder = new ListOfOrder();
         listOfOrder.readOrder();
@@ -77,7 +77,7 @@ public class Member  implements Serializable {
         }
         return total_spending;
     }
-    //Change the membership of a member based on their total spending
+    // Change the membership of a member based on their total spending
     public void updateMembership() throws Exception{
         double total_spending = this.getTotal_spending();
         if (this.getTotal_spending() < 5000000){
@@ -90,7 +90,7 @@ public class Member  implements Serializable {
             this.membership = "Platinum";
         }
     }
-    //Prints out all details of a member
+    // Prints out all details of a member
     public void viewMember() throws Exception {
         System.out.println("Member ID: " + this.id + "\nName: " + this.name + " \nAddress: " + this.address +
                 " \nMembership: " + this.membership + "\nTotal spending: " + String.format("%,.0f",this.getTotal_spending()) + " VND" + "\n\n");

@@ -16,7 +16,8 @@ public class ListOfAdmin {
     public void setAdminList(ArrayList<Admin> listOfAdmin) {
         this.adminList = listOfAdmin;
     }
-    //Reads all admin objects from admin.txt and stores them in an arraylist
+
+    // Reads all admin objects from admin.txt and stores them in an arraylist
     public void readAdmins() {
         String path = "src/files/admin.txt";
         try {
@@ -37,7 +38,8 @@ public class ListOfAdmin {
             e.printStackTrace();
         }
     }
-    //Takes in user input and validates username/password
+
+    // Takes in user input and validates username/password
     public Admin adminLogin() {
         Scanner scanner = new Scanner(System.in);
         while (true) {

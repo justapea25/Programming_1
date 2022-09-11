@@ -69,7 +69,8 @@ public class Order implements Serializable, Comparable<Order> {
     public String getStatus() {
         return status;
     }
-    //let user change status of orders
+
+    // Let user change status of orders
     public void setStatus() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter new status: ");
@@ -89,9 +90,9 @@ public class Order implements Serializable, Comparable<Order> {
     public static void create_order(Member customer) throws Exception {
         ListOfProduct listOfProduct = new ListOfProduct();
         listOfProduct.readProducts();
-        //Creates empty order_items arraylist
+        // Creates empty order_items arraylist
         ArrayList<Order_Item> order_items = new ArrayList<>();
-        //User input about products and their quantities
+        // User input about products and their quantities
         while (true) {
             System.out.print("What do you want to buy? (enter product ID) ");
             String item = ValidateInput.inputPatternCheck("P[0-9]*", "Product ID should start with P and followed by a number (e.g. P3)");

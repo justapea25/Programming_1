@@ -21,7 +21,8 @@ public class ListOfOrder {
     }
 
     public void readOrder() throws IOException, ClassNotFoundException{
-        //Reads all order object files and stores in an arraylist
+
+        // Reads all order object files and stores in an arraylist
         File ordersPackage = new File("src/files/Orders");
         File[] orders = ordersPackage.listFiles();
         if (orders != null) {
@@ -35,7 +36,7 @@ public class ListOfOrder {
         Collections.sort(this.orderList);
     }
     public Order searchOrderByID() {
-        //Takes in user input and prints out details of the corresponding order
+        // Takes in user input and prints out details of the corresponding order
         while (true) {
             System.out.print("Enter order ID: ");
             String id = ValidateInput.inputPatternCheck("O[0-9]*", "Order ID should start with O and followed by a number (e.g. O1)");
@@ -48,7 +49,7 @@ public class ListOfOrder {
         }
     }
     public ArrayList<Order> searchOrderByMember() {
-        //Takes in user input and prints out all orders with the corresponding member ID
+        // Takes in user input and prints out all orders with the corresponding member ID
         System.out.print("Enter the member ID: ");
         String memberId = ValidateInput.inputPatternCheck("M[0-9]*", "Member ID should start with M and followed by a number (e.g. M3)");
         ArrayList<Order> orders = new ArrayList<>();
@@ -67,7 +68,7 @@ public class ListOfOrder {
     }
 
     public int getTotalOrder() {
-        //Returns the total number of existing orders
+        // Returns the total number of existing orders
         int count = 0;
         for (Order order : this.getOrderList()){
             if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){
@@ -78,7 +79,7 @@ public class ListOfOrder {
     }
 
     public double getTotalRevenue() {
-        //Returns the total revenue of the store
+        // Returns the total revenue of the store
         double totalRevenue = 0;
         for (Order order : this.getOrderList()){
             if (order.getDate().toString().substring(4, 10).equals(new Date().toString().substring(4, 10))){

@@ -21,7 +21,8 @@ public class ListOfMember {
     public void addMemberToList(Member member) {
         memberList.add(member);
     }
-    //Reads all member objects from member.txt and stores them in an arraylist
+
+    // Reads all member objects from member.txt and stores them in an arraylist
     public void readMembers() throws Exception{
         this.memberList.clear();
         String path = "src/files/member.txt";
@@ -47,7 +48,8 @@ public class ListOfMember {
             e.printStackTrace();
         }
     }
-    //Write the member arraylist to member.txt
+
+    // Write the member arraylist to member.txt
     public void writeMemberToFile() {
         String path = "src/files/member.txt";
 
@@ -70,13 +72,15 @@ public class ListOfMember {
             e.printStackTrace();
         }
     }
-    //Prints out details about all existing members
+
+    // Prints out details about all existing members
     public void viewAllMembers() throws Exception {
         for (Member member : this.memberList){
             member.viewMember();
         }
     }
-    //Takes in user input and create a new member
+
+    // Takes in user input and create a new member
     public Member register() throws Exception {
         Scanner scanner = new Scanner(System.in);
         int count;
@@ -99,7 +103,7 @@ public class ListOfMember {
         System.out.print("Enter your address: ");
         String address = scanner.nextLine();
         String id;
-        //Generates a unique member ID
+        // Generates a unique member ID
         if (memberList.size() < 1) {
             id = "M1";
         } else {
@@ -110,7 +114,8 @@ public class ListOfMember {
         this.addMemberToList(member);
         return member;
     }
-    //Takes in user input and validates username/password
+
+    // Takes in user input and validates username/password
     public Member memberLogin() {
         Scanner scanner = new Scanner(System.in);
         while (true) {

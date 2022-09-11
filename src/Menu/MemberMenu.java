@@ -28,7 +28,7 @@ public class MemberMenu extends GuestMenu {
         productList.readProducts();
         ListOfOrder orderList = new ListOfOrder();
 
-        label:
+        label: // Label to indicate the loop to break later
         while (true) {
             try {
                 System.out.println("Welcome to our tech store: " + member.getUsername() + " (Membership: " + member.getMembership() + ")");
@@ -65,7 +65,7 @@ public class MemberMenu extends GuestMenu {
                         member.viewMember();
                         break;
                     case "8":
-                        break label;
+                        break label; // break the labelled while loop
                     default:
                         System.out.println("No matching selection, please try again");
                         break;

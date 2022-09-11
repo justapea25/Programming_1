@@ -1,7 +1,6 @@
 package Account;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Admin implements Serializable {
     private String username;
